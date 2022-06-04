@@ -20,6 +20,14 @@ public class Habitacion {
     public Habitacion() {
     }
 
+    public Habitacion(int idHabitacion, boolean estado, Categoria categoria, int nroHabitacion, int piso) {
+        this.idHabitacion = idHabitacion;
+        this.estado = estado;
+        this.categoria = categoria;
+        this.nroHabitacion = nroHabitacion;
+        this.piso = piso;
+    }
+
     public Habitacion(boolean estado, Categoria categoria, int nroHabitacion, int piso) {
         this.estado = estado;
         this.categoria = categoria;

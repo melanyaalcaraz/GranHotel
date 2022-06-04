@@ -22,6 +22,18 @@ public class Huesped {
     public Huesped() {
     }
 
+    public Huesped(int idhuesped, String nombre, String Apellido, int dni, String domicilio, String correo, double telefono, boolean activo) {
+        this.idhuesped = idhuesped;
+        this.nombre = nombre;
+        this.Apellido = Apellido;
+        this.dni = dni;
+        this.domicilio = domicilio;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.activo = activo;
+    }
+
+    
     
     public Huesped(String nombre, String Apellido, int dni, String domicilio, String correo, double telefono, boolean activo) {
         this.nombre = nombre;
@@ -96,6 +108,7 @@ public class Huesped {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+    
     
     
 }

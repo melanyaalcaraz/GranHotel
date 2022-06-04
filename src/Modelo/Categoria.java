@@ -15,6 +15,14 @@ public class Categoria {
     public Categoria() {
     }
 
+    public Categoria(int idCategoria, int cantPersonas, int cantCamas, int tipoCama, int tipoHabitacion) {
+        this.idCategoria = idCategoria;
+        this.cantPersonas = cantPersonas;
+        this.cantCamas = cantCamas;
+        this.tipoCama = tipoCama;
+        this.tipoHabitacion = tipoHabitacion;
+    }
+
     public Categoria(int cantPersonas, int cantCamas, int tipoCama, int tipoHabitacion) {
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;

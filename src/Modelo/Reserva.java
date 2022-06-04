@@ -14,8 +14,8 @@ import java.time.LocalDate;
 public class Reserva {
 
     private int idReserva;
-    private Habitacion idHabitacion;
-    private Huesped idHuesped;
+    private Habitacion habitacion;
+    private Huesped huesped;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double precioTotal;
@@ -23,9 +23,18 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Habitacion idHabitacion, Huesped idHuesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal) {
-        this.idHabitacion = idHabitacion;
-        this.idHuesped = idHuesped;
+    public Reserva(int idReserva, Habitacion habitacion, Huesped huesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal) {
+        this.idReserva = idReserva;
+        this.habitacion = habitacion;
+        this.huesped = huesped;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
+    }
+
+    public Reserva(Habitacion habitacion, Huesped huesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal) {
+        this.habitacion = habitacion;
+        this.huesped = huesped;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
@@ -39,20 +48,20 @@ public class Reserva {
         this.idReserva = idReserva;
     }
 
-    public Habitacion getIdHabitacion() {
-        return idHabitacion;
+    public Habitacion getHabitacion() {
+        return habitacion;
     }
 
-    public void setIdHabitacion(Habitacion idHabitacion) {
-        this.idHabitacion = idHabitacion;
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
     }
 
-    public Huesped getIdHuesped() {
-        return idHuesped;
+    public Huesped getHuesped() {
+        return huesped;
     }
 
-    public void setIdHuesped(Huesped idHuesped) {
-        this.idHuesped = idHuesped;
+    public void setHuesped(Huesped huesped) {
+        this.huesped = huesped;
     }
 
     public LocalDate getFechaInicio() {
@@ -78,5 +87,20 @@ public class Reserva {
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
     }
+    
+    public void modificoIdHuesped(int idhuesped)
+    {  huesped.setIdhuesped(idhuesped);
+    }
 
+    public int veoIdHuesped()
+    { return(huesped.getIdhuesped());
+    }
+    
+    public int veoIdHabitacion()
+    { return(habitacion.getIdHabitacion());
+    }
+    
+    public void modificoIdHabitacion(int idHabitacion)
+    { habitacion.setIdHabitacion(idHabitacion);
+    }
 }
