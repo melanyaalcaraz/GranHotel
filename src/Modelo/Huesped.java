@@ -108,7 +108,12 @@ public class Huesped {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return ( idhuesped + ", " + nombre + ", " + Apellido + ", " + dni + ", " + domicilio + ", " + correo + ", " + telefono);
+    }
     
     
-    
+     
 }
