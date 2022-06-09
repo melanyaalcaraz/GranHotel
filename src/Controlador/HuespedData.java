@@ -40,55 +40,105 @@ public class HuespedData {
             ps.setInt(3, huesped.getDni());
             ps.setString(4, huesped.getDomicilio());
             ps.setString(5, huesped.getCorreo());
-            ps.setDouble(6, huesped.getTelefono());
-            ps.setInt(7, huesped.isActivo()? 1 : 0);
+            ps.setString(6, huesped.getTelefono());
+            ps.setBoolean(7, huesped.isActivo());
             
             ps.executeUpdate();
             ResultSet rs= ps.getGeneratedKeys();
             
             if(rs.next())
             { huesped.setIdhuesped(rs.getInt(1));
-              JOptionPane.showMessageDialog(null, "El huesped fue añadido con exito");
+              JOptionPane.showMessageDialog(null, "El huesped fue guardado con exito");
             }
             else
-                JOptionPane.showMessageDialog(null, "El huesped no fue añadido");
+                JOptionPane.showMessageDialog(null, "El huesped no fue guardado");
            
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, "Error interno, no se pudo guardar el huesped");
         }
     }     
+    
+    
      public Huesped buscarHuesped(int idHuesped)
      { 
          Huesped huesped= new Huesped();
-         String sql= "SELECT nombre, apellido, dni, domicilio, correo, celular, activo FROM huesped WHERE idHuesped=? AND activo=1";
+         String sql= "SELECT *FROM huesped WHERE idHuesped=? AND activo=1;";
          //debemos decidir si la busqueda es por huesped activo o no y si es por dni creo es mejor 
          try {
-            PreparedStatement ps= con.prepareStatement(sql);
-            ps.setInt(1, idHuesped);
+              PreparedStatement ps= con.prepareStatement(sql);
+              ps.setInt(1, idHuesped);
            
-            ResultSet rs= ps.executeQuery();
+              ResultSet rs= ps.executeQuery();
+              //System.out.println("rs next"+ rs.next());
             
-            if(rs.next())
-            { huesped.setIdhuesped(idHuesped);
-              huesped.setNombre(rs.getString("nombre"));
-              huesped.setApellido(rs.getString("apellido"));
-              huesped.setDni(rs.getInt("dni"));
-              huesped.setDomicilio(rs.getString("domicilio"));
-              huesped.setCorreo(rs.getString("correo"));
-              huesped.setTelefono(rs.getDouble("celular"));
-              huesped.setActivo(rs.getBoolean("acivo"));
-            }
+              if(rs.next())
+              { huesped.setIdhuesped(idHuesped);
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDni(rs.getInt("dni"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setTelefono(rs.getString("celular"));
+                huesped.setActivo(rs.getBoolean("activo"));
+               }
             else
-                JOptionPane.showMessageDialog(null, "No existe cliente con ese ID");
+            {  JOptionPane.showMessageDialog(null, "No existe huesped con ese ID");
+            }
         
            ps.close();
         
          } catch (SQLException ex) {
-            Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, "Error interno, el huesped no pudo ser localizado");
         }
      
          return(huesped);
      }
         
+     
+     public Huesped modificarHuesped(int idHuesped, Huesped huesped)
+     {  String sql="UPDATE nombre=?, apellido=?, dni=?, domicilio=?, correo=?, celular=? WHERE idHuesped=? AND activo=1";
+        
+       PreparedStatement ps=null;
+       
+        try {
+            ps=con.prepareStatement(sql);
+            
+            ps.setString(1, huesped.getNombre());
+            ps.setString(2, huesped.getApellido());
+            ps.setInt(3, huesped.getDni());
+            ps.setString(4, huesped.getDomicilio());
+            ps.setString(5, huesped.getCorreo());
+            ps.setString(6, huesped.getTelefono());
+            int hecho=ps.executeUpdate();
+            
+            if(hecho==1)
+             JOptionPane.showMessageDialog(null, "El huesped fue modificado");
+            else
+                JOptionPane.showMessageDialog(null, "El huesped no pudo ser modificado, no se encuentra activo");
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error interno, el huesped no pudo ser modificado");
+        }
+       return(huesped);
+     }
+     
+     public void eliminarHuesped(int idHuesped)
+     { String sql="UPDATE huesped set activo=0 WHERE id=? AND activo=1";
+       PreparedStatement ps=null;
+       
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idHuesped);
+            int hecho=ps.executeUpdate();
+            
+            if(hecho==1)
+             JOptionPane.showMessageDialog(null, "El huesped fue eliminado");
+            else
+                JOptionPane.showMessageDialog(null, "El huesped no existe");
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error interno,el huesped no pudo ser eliminado");
+        }
+     }
     }

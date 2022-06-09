@@ -16,13 +16,13 @@ public class Huesped {
     private int dni;
     private String domicilio;
     private String correo;
-    private double telefono;
+    private String telefono;
     private boolean activo;
 
     public Huesped() {
     }
 
-    public Huesped(int idhuesped, String nombre, String Apellido, int dni, String domicilio, String correo, double telefono, boolean activo) {
+    public Huesped(int idhuesped, String nombre, String Apellido, int dni, String domicilio, String correo, String telefono, boolean activo) {
         this.idhuesped = idhuesped;
         this.nombre = nombre;
         this.Apellido = Apellido;
@@ -35,7 +35,7 @@ public class Huesped {
 
     
     
-    public Huesped(String nombre, String Apellido, int dni, String domicilio, String correo, double telefono, boolean activo) {
+    public Huesped(String nombre, String Apellido, int dni, String domicilio, String correo, String telefono, boolean activo) {
         this.nombre = nombre;
         this.Apellido = Apellido;
         this.dni = dni;
@@ -93,11 +93,11 @@ public class Huesped {
         this.correo = correo;
     }
 
-    public double getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(double telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -111,7 +111,36 @@ public class Huesped {
 
     @Override
     public String toString() {
-        return ( idhuesped + ", " + nombre + ", " + Apellido + ", " + dni + ", " + domicilio + ", " + correo + ", " + telefono);
+        return "Huesped{" + "idhuesped=" + idhuesped + ", nombre=" + nombre + ", Apellido=" + Apellido + ", dni=" + dni + ", domicilio=" + domicilio + ", correo=" + correo + ", telefono=" + telefono + ", activo=" + activo + '}';
+    }
+
+  
+  
+    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.dni;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Huesped other = (Huesped) obj;
+        if (this.dni != other.dni) {
+            return false;
+        }
+        return true;
     }
     
     
