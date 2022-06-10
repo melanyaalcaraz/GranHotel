@@ -1,30 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author alejo
- */
+
+    
 public class Conexion {
+  
     private String url="jdbc:mysql://localhost/granhotel";
     private String usuario="root";
     private String password="";
 
     private Connection conexion;
-    
-    public Conexion() throws ClassNotFoundException{
+    //Metodo constructor
+    public Conexion() {
+        try {
             Class.forName("org.mariadb.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+           JOptionPane.showMessageDialog(null, "Err or de cone xion.");
+        }
         
     }
-    
+    //Metodo constructor 
     public Conexion(String url, String usuario, String password) throws ClassNotFoundException {
         this.url = url;
         this.usuario = usuario;
@@ -35,12 +35,16 @@ public class Conexion {
 
     }
     
-    public Connection getConexion() throws SQLException{
+    public Connection getConexion() {
         if(conexion == null){
-                    // Setup the connection with the DB
-            conexion = DriverManager
-                .getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC"
-                        + "&user=" + usuario + "&password=" + password);
+            try {
+                // Setup the connection with the DB
+                conexion = DriverManager
+                        .getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC"
+                                + "&user=" + usuario + "&password=" + password);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexion."); ;
+            }
         }
         return conexion;
     }
