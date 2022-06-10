@@ -11,8 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
  * @author Martin
  */
 public class HuespedData {
+  
     Connection con=null;
 
     public HuespedData(Conexion con) {
@@ -64,13 +65,12 @@ public class HuespedData {
      { 
          Huesped huesped= new Huesped();
          String sql= "SELECT *FROM huesped WHERE idHuesped=? AND activo=1;";
-         //debemos decidir si la busqueda es por huesped activo o no y si es por dni creo es mejor 
+         
          try {
               PreparedStatement ps= con.prepareStatement(sql);
               ps.setInt(1, idHuesped);
            
               ResultSet rs= ps.executeQuery();
-              //System.out.println("rs next"+ rs.next());
             
               if(rs.next())
               { huesped.setIdhuesped(idHuesped);
@@ -95,14 +95,47 @@ public class HuespedData {
          return(huesped);
      }
         
+       public Huesped buscarHuespedPorDni(int dni)
+     { 
+         Huesped huesped= new Huesped();
+         String sql= "SELECT *FROM huesped WHERE dni=? AND activo=1;";
+        
+         try {
+              PreparedStatement ps= con.prepareStatement(sql);
+              ps.setInt(1, dni);
+           
+              ResultSet rs= ps.executeQuery();
+                         
+              if(rs.next())
+              { huesped.setIdhuesped(rs.getInt("idHuesped"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDni(dni);
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setTelefono(rs.getString("celular"));
+                huesped.setActivo(rs.getBoolean("activo"));
+               }
+            else
+            {  JOptionPane.showMessageDialog(null, "No existe huesped con ese DNI");
+            }
+        
+           ps.close();
+        
+         } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error interno, el huesped no pudo ser localizado");
+        }
+     
+         return(huesped);
+     }
      
      public Huesped modificarHuesped(int idHuesped, Huesped huesped)
-     {  String sql="UPDATE nombre=?, apellido=?, dni=?, domicilio=?, correo=?, celular=? WHERE idHuesped=? AND activo=1";
+     {  String sql="UPDATE huesped SET nombre = ?, apellido = ?, dni = ?, domicilio = ?, correo = ?, celular = ? WHERE idHuesped=? AND activo=true";
         
        PreparedStatement ps=null;
        
         try {
-            ps=con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
             
             ps.setString(1, huesped.getNombre());
             ps.setString(2, huesped.getApellido());
@@ -110,12 +143,15 @@ public class HuespedData {
             ps.setString(4, huesped.getDomicilio());
             ps.setString(5, huesped.getCorreo());
             ps.setString(6, huesped.getTelefono());
+            ps.setInt(7, idHuesped);
             int hecho=ps.executeUpdate();
-            
+    
+            huesped.setIdhuesped(idHuesped);
             if(hecho==1)
              JOptionPane.showMessageDialog(null, "El huesped fue modificado");
             else
                 JOptionPane.showMessageDialog(null, "El huesped no pudo ser modificado, no se encuentra activo");
+            
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error interno, el huesped no pudo ser modificado");
@@ -124,7 +160,7 @@ public class HuespedData {
      }
      
      public void eliminarHuesped(int idHuesped)
-     { String sql="UPDATE huesped set activo=0 WHERE id=? AND activo=1";
+     { String sql="UPDATE huesped SET activo=0 WHERE idHuesped=? AND activo=true";
        PreparedStatement ps=null;
        
         try {
@@ -141,4 +177,55 @@ public class HuespedData {
             JOptionPane.showMessageDialog(null, "Error interno,el huesped no pudo ser eliminado");
         }
      }
+     
+      public void activarHuesped(int idHuesped) {
+          String sql = "UPDATE huesped SET activo = 1 WHERE idHuesped = ? AND activo=0";
+          PreparedStatement ps =null;
+        try {
+            
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idHuesped);
+            int hecho=ps.executeUpdate();
+            
+            if(hecho==1)
+             JOptionPane.showMessageDialog(null, "El huesped fue activado");
+            else
+                JOptionPane.showMessageDialog(null, "El huesped no existe");
+            
+            ps.close();
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, " Error interno, no se pudo activar el huesped.");
+        }
     }
+     public List<Huesped> listarHuespedes() {
+
+        List<Huesped> huespedes = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM huesped WHERE activo = 1 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Huesped huesped= new Huesped();
+                huesped.setIdhuesped(rs.getInt("idHuesped"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDni(rs.getInt("dni"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setTelefono(rs.getString("celular"));
+                huesped.setActivo(rs.getBoolean("activo"));
+                
+                huespedes.add(huesped);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,  "Error interno al armar la lista de huespedes");
+        }
+        return huespedes;
+    }
+   }
+    
+    

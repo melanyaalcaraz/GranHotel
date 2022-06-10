@@ -31,17 +31,46 @@ public class GranHotel {
         
         Conexion con = new Conexion();
         
-        Huesped h1= new Huesped("Francisco", "Casco", 54333333, "su casa123", "elmostro@quesio156", "15430961",true);
-        Huesped h2= new Huesped("Martin", "Casco", 26444444, "mi casa1234", "yomostro@quesio156", "1522430961",true);
-        Huesped h3=new Huesped("Bauti", "martinez", 50555555, "la estancia444", "paparapa@yaesta", "158888888", true);
+        Huesped h1= new Huesped("Maria", "Perez", 12, "abejas", "@correo", "1234",true);
+        Huesped h2= new Huesped("Lucia", "Celi", 415, "luciernagas", "@correo1", "4321",true);
+        Huesped h3= new Huesped("Benjamin", "Bilotta", 784, "mariposas", "@correo3", "741258", true);
         
-        HuespedData hd1= new HuespedData(con);
-//               hd1.guardarHuesped(h1);
-//               hd1.guardarHuesped(h2);
-//               hd1.guardarHuesped(h3);
-        
-         System.out.println("huesped 1 "+hd1.buscarHuesped(2));
-        
+        HuespedData huespedd= new HuespedData(con);
+               huespedd.guardarHuesped(h1);
+               huespedd.guardarHuesped(h2);
+               huespedd.guardarHuesped(h3);
+//        
+//        
+//         System.out.println("Busca por ID");
+ //              System.out.println(""+huespedd.buscarHuesped(1));
+//               System.out.println(""+huespedd.buscarHuesped(5));// no existe este huesped solo para probar
+//               System.out.println(""+huespedd.buscarHuesped(2));
+//               System.out.println(""+huespedd.buscarHuesped(3));
+//               
+//               System.out.println("");
+//               System.out.println("");
+//               System.out.println("Busca por DNI");
+//           System.out.println(""+huespedd.buscarHuespedPorDni(54333333));
+//               System.out.println("un dni que no esta: "+ huespedd.buscarHuespedPorDni(123456));
+//               
+//               System.out.println("");
+//               System.out.println("");
+//               System.out.println("Modificar Huesped");
+//               
+//               System.out.println(""+huespedd.buscarHuesped(2));
+//             Huesped h4= new Huesped("Luciano", "Casco", 26467307, "est israel", "cascasen@quesio156", "15225320",true);
+//              System.out.println("huesped modificado"+huespedd.modificarHuesped(2, h2));
+//
+//
+//              huespedd.eliminarHuesped(6);
+//
+ //              huespedd.activarHuesped(3);
+//
+//
+//                System.out.println("");
+//                System.out.println("");
+//                System.out.println("listar huespedes");
+//                huespedd.listarHuespedes().forEach(huesped-> {System.out.println("hueped"+huesped);});
         
         
         
