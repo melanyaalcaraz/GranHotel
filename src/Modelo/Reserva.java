@@ -19,17 +19,21 @@ public class Reserva {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double precioTotal;
+    private int cantPersonas;
+    private boolean activo;
 
     public Reserva() {
     }
 
-    public Reserva(int idReserva, Habitacion habitacion, Huesped huesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal) {
+    public Reserva(int idReserva, Habitacion habitacion, Huesped huesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal, int cantPersonas, boolean activo) {
         this.idReserva = idReserva;
         this.habitacion = habitacion;
         this.huesped = huesped;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.precioTotal = precioTotal;
+        this.cantPersonas = cantPersonas;
+        this.activo = activo;
     }
 
     public Reserva(Habitacion habitacion, Huesped huesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal) {
@@ -102,5 +106,21 @@ public class Reserva {
     
     public void modificoIdHabitacion(int idHabitacion)
     { habitacion.setIdHabitacion(idHabitacion);
+    }
+
+    public int getCantPersonas() {
+        return cantPersonas;
+    }
+
+    public void setCantPersonas(int cantPersonas) {
+        this.cantPersonas = cantPersonas;
+    }
+ 
+    public boolean isActivo() {
+        return activo;
+    }
+        
+    public void setActivo(boolean activo){
+        this.activo = activo;
     }
 }

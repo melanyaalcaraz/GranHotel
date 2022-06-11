@@ -33,14 +33,17 @@ public class ReservaData {
     }
     
     public void reservar(Reserva reser) {
-        String sql = "INSERT INTO reserva(idHuesped, idHabitacion, fechaInicio , fechaFin , precio) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO `reserva`(`idReserva`, `idHabitacion`, `idHuesped`, `fechaInicio`, `fechaFin`, `precioTotal`, `cantPersonas`, `activo`) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? )";
             try{
                 PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, reser.getHuesped().getIdhuesped());
+                ps.setInt(1, reser.getIdReserva());
                 ps.setInt(2, reser.getHabitacion().getIdHabitacion());
+                ps.setInt(3, reser.getHuesped().getIdhuesped());
                 ps.setDate(3, Date.valueOf(reser.getFechaInicio()));
-                ps.setDate(3, Date.valueOf(reser.getFechaFin()));
+                ps.setDate(4, Date.valueOf(reser.getFechaFin()));
                 ps.setDouble(5, reser.getPrecioTotal());
+                ps.setInt(6, reser.getCantPersonas());
+                ps.setInt(4, reser.isActivo() ? 1 : 0);
                 
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
@@ -57,7 +60,55 @@ public class ReservaData {
             }
     
     }
+    
+    public Reserva modificarReserva(int idReserva, Reserva reserva){  
+        String sql="UPDATE `reserva` SET `idReserva`= ? ,`idHabitacion`= ? ,`idHuesped`= ? ,`fechaInicio`= ? ,`fechaFin`= ? ,`precioTotal`= ? ,`cantPersonas`= ? ,`activo`= ? , WHERE 1";
+        PreparedStatement ps=null;
+       
+        try {
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, reserva.getIdReserva());
+            ps.setInt(2, reserva.veoIdHabitacion());
+            ps.setInt(3, reserva.veoIdHuesped());
+            ps.setDate(4, Date.valueOf(reserva.getFechaInicio()));
+            ps.setDate(5, Date.valueOf(reserva.getFechaFin()));
+            ps.setDouble(6, reserva.getPrecioTotal());
+            ps.setInt(7, reserva.getCantPersonas());
+            
+            int hecho = ps.executeUpdate();
+    
+            reserva.setIdReserva(idReserva);
+            if(hecho==1)
+             JOptionPane.showMessageDialog(null, "La reserva fue modificada con exito");
+            else
+                JOptionPane.showMessageDialog(null, "La reserva no pudo ser modificada, no se encuentra activa");
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error interno, la reserva no pudo ser efectuada");
+        }
+       return(reserva);
+    }
      
+    public void anularReserva(int idHuesped,int idHabitacion){
+    
+        try {    
+            String sql = "DELETE FROM reserva WHERE idHuesped =? and idHabitacion =?;";
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idHuesped);
+            ps.setInt(2, idHabitacion);
+               
+            ps.executeUpdate();
+             
+            ps.close();
+    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al borrar.");
+        }
+    }
+    
     public List<Reserva> obtenerHabitacionesOcupadas(){
         List<Reserva> reservas = new ArrayList<>();
           
@@ -194,24 +245,6 @@ public class ReservaData {
     
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al actualizar precio.");
-        }
-    }
-    
-    public void anularReserva(int idHuesped,int idHabitacion){
-    
-        try {    
-            String sql = "DELETE FROM reserva WHERE idHuesped =? and idHabitacion =?;";
-
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, idHuesped);
-            ps.setInt(2, idHabitacion);
-               
-            ps.executeUpdate();
-             
-            ps.close();
-    
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al borrar.");
         }
     }
     
