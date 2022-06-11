@@ -9,21 +9,25 @@ public class Categoria {
     private int idCategoria;
     private int cantPersonas;
     private int cantCamas;
-    private int tipoCama;
+    private String tipoCama;
     private int tipoHabitacion;
+    private double precio;
+    private boolean activo;
 
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, int cantPersonas, int cantCamas, int tipoCama, int tipoHabitacion) {
+    public Categoria(int idCategoria, int cantPersonas, int cantCamas, String tipoCama, int tipoHabitacion, double precio, boolean activo) {
         this.idCategoria = idCategoria;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;
         this.tipoHabitacion = tipoHabitacion;
+        this.precio = precio;
+        this.activo = activo;
     }
 
-    public Categoria(int cantPersonas, int cantCamas, int tipoCama, int tipoHabitacion) {
+    public Categoria(int cantPersonas, int cantCamas, String tipoCama, int tipoHabitacion) {
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;
@@ -54,11 +58,11 @@ public class Categoria {
         this.cantCamas = cantCamas;
     }
 
-    public int getTipoCama() {
+    public String getTipoCama() {
         return tipoCama;
     }
 
-    public void setTipoCama(char tipoCama) {
+    public void setTipoCama(String tipoCama) {
         this.tipoCama = tipoCama;
     }
 
@@ -68,6 +72,22 @@ public class Categoria {
 
     public void setTipoHabitacion(int tipoHabitacion) {
         this.tipoHabitacion = tipoHabitacion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
     
     

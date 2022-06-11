@@ -75,13 +75,13 @@ public class GranHotel {
         
         
         HabitacionData hd = new HabitacionData(con);
-        Categoria cat1= new Categoria(1,1,5,3,1);
-        Categoria cat2= new Categoria(2,1,5,3,1);
-        Categoria cat3= new Categoria(3,1,5,3,1);
-        Habitacion  hab1 = new Habitacion(true,cat1,1,1,false);
-        Habitacion  hab2 = new Habitacion(true,cat2,2,1,false);
-        Habitacion  hab3 = new Habitacion(false,cat3,25,1,true);
-        Habitacion  hab4 = new Habitacion(true,cat3,4,1,false);
+        //Categoria cat1= new Categoria(1,1,5,3,1);
+        //Categoria cat2= new Categoria(2,1,5,3,1);
+        //Categoria cat3= new Categoria(3,1,5,3,1);
+        //Habitacion  hab1 = new Habitacion(true,cat1,1,1,false);
+        //Habitacion  hab2 = new Habitacion(true,cat2,2,1,false);
+        //Habitacion  hab3 = new Habitacion(false,cat3,25,1,true);
+        //Habitacion  hab4 = new Habitacion(true,cat3,4,1,false);
         
 //        hd.agregarHabitacion(hab1);
 //        hd.agregarHabitacion(hab2);
