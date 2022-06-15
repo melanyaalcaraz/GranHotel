@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2022 a las 22:06:33
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 15-06-2022 a las 21:40:12
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `granhotel`
+-- Base de datos: `hotelgrande`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `categoria` (
   `cantPersonas` int(11) NOT NULL,
   `cantCamas` int(11) NOT NULL,
   `tipoCamas` int(11) NOT NULL,
-  `tipoHabitacion` int(11) NOT NULL,
+  `tipoHabitacion` varchar(11) NOT NULL,
   `precio` double NOT NULL,
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,7 +42,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`idCategoria`, `cantPersonas`, `cantCamas`, `tipoCamas`, `tipoHabitacion`, `precio`, `activo`) VALUES
-(1, 0, 0, 0, 0, 0, 0);
+(1, 0, 0, 0, '0', 0, 0),
+(5, 2, 3, 1, 'single', 100, 1),
+(6, 2, 1, 1, 'doble', 100, 1),
+(7, 3, 2, 2, 'triple', 1500, 1);
 
 -- --------------------------------------------------------
 
@@ -52,12 +55,24 @@ INSERT INTO `categoria` (`idCategoria`, `cantPersonas`, `cantCamas`, `tipoCamas`
 
 CREATE TABLE `habitacion` (
   `idHabitacion` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL,
-  `idCategoria` int(11) NOT NULL,
+  `idCategoria` int(1) NOT NULL,
   `nmroHabitacion` int(11) NOT NULL,
   `piso` int(11) NOT NULL,
-  `refaccion` tinyint(1) DEFAULT NULL
+  `refaccion` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `habitacion`
+--
+
+INSERT INTO `habitacion` (`idHabitacion`, `idCategoria`, `nmroHabitacion`, `piso`, `refaccion`) VALUES
+(1, 1, 111, 1, 1),
+(2, 1, 112, 1, 0),
+(3, 1, 113, 1, 1),
+(4, 1, 114, 1, 0),
+(5, 7, 25, 1, 1),
+(6, 6, 5, 1, 1),
+(19, 5, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -76,6 +91,19 @@ CREATE TABLE `huesped` (
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `huesped`
+--
+
+INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `dni`, `domicilio`, `correo`, `celular`, `activo`) VALUES
+(101, 'a', 'a', 123, 'asd', 'asd@', '123123', 1),
+(102, 'b', 'b', 456, 'qwe', 'asd@', '123123', 1),
+(103, 'c', 'c', 789, 'xzc', 'asd@', '123123', 1),
+(104, 'd', 'd', 101112, 'qwe', 'asd@', '123123', 1),
+(105, 'Maria', 'Perez', 12, 'abejas', '@correo', '1234', 1),
+(106, 'Lucia', 'Celi', 415, 'luciernagas', '@correo1', '4321', 1),
+(107, 'Benjamin', 'Bilotta', 784, 'mariposas', '@correo3', '741258', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +120,16 @@ CREATE TABLE `reserva` (
   `cantPersonas` int(11) NOT NULL,
   `activo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`idReserva`, `idHabitacion`, `idHuesped`, `fechaInicio`, `fechaFin`, `precioTotal`, `cantPersonas`, `activo`) VALUES
+(1, 5, 101, '2022-06-20', '2022-06-25', 4500, 0, 1),
+(2, 5, 102, '2022-06-26', '2022-06-30', 52000, 2, 1),
+(3, 3, 103, '2022-06-27', '2022-06-29', 7000, 2, NULL),
+(4, 4, 104, '2022-06-27', '2022-06-29', 7000, 2, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -133,25 +171,25 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
