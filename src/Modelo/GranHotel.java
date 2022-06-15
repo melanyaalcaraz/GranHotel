@@ -36,9 +36,9 @@ public class GranHotel {
         Huesped h3= new Huesped("Benjamin", "Bilotta", 784, "mariposas", "@correo3", "741258", true);
         
         HuespedData huespedd= new HuespedData(con);
-               huespedd.guardarHuesped(h1);
-               huespedd.guardarHuesped(h2);
-               huespedd.guardarHuesped(h3);
+//               huespedd.guardarHuesped(h1);
+//               huespedd.guardarHuesped(h2);
+//               huespedd.guardarHuesped(h3);
 //        
 //        
 //         System.out.println("Busca por ID");
@@ -75,25 +75,26 @@ public class GranHotel {
         
         
         HabitacionData hd = new HabitacionData(con);
-        //Categoria cat1= new Categoria(1,1,5,3,1);
-        //Categoria cat2= new Categoria(2,1,5,3,1);
-        //Categoria cat3= new Categoria(3,1,5,3,1);
-        //Habitacion  hab1 = new Habitacion(true,cat1,1,1,false);
-        //Habitacion  hab2 = new Habitacion(true,cat2,2,1,false);
-        //Habitacion  hab3 = new Habitacion(false,cat3,25,1,true);
-        //Habitacion  hab4 = new Habitacion(true,cat3,4,1,false);
+        Categoria cat1= new Categoria(5,2,3,1,"single",100,true);
+        Categoria cat2= new Categoria(6,2,1,1,"doble",100,true);
+        Categoria cat3= new Categoria(7,3,2,2,"triple",1500,true);
         
-//        hd.agregarHabitacion(hab1);
-//        hd.agregarHabitacion(hab2);
-//        hd.agregarHabitacion(hab3);
-//        hd.agregarHabitacion(hab4);
-//        hd.modificarHabitacion(3, hab3);
-//        hd.eliminarHabitacion(10);
-//        System.out.println(hd.buscarHabitacion(3));
-//          hd.habilitarHabitacion(3, hab3);
+        Habitacion  hab1 = new Habitacion(cat1,1,1,false);
+        Habitacion  hab2 = new Habitacion(cat2,2,1,false);
+        Habitacion  hab3 = new Habitacion(cat3,25,1,true);
+        Habitacion  hab4 = new Habitacion(cat3,4,1,false);
+        
+//          hd.agregarHabitacion(hab1);
+//          hd.agregarHabitacion(hab2);
+//          hd.agregarHabitacion(hab3);
+//          hd.agregarHabitacion(hab4);
+//          hd.modificarHabitacion(5, hab3);
+//          hd.eliminarHabitacion(1);
+//          System.out.println(hd.buscarHabitacion(6));
+//          hd.habilitarHabitacion(6, hab3);
 //         hd.deshabilitarHabitacion(3, hab3);
         
-//        List <Habitacion> lista = hd.obtenerHabitacionesXCategoria(3);
+//        List <Habitacion> lista = hd.obtenerHabitacionesXCategoria(1);
 //        //Habitacion con categoria 3 se encuentra en refaccion
 //        int total = 0;
 //        for(Habitacion h : lista){
@@ -113,7 +114,7 @@ public class GranHotel {
 
 
 //        List <Habitacion> re = hd.obtenerHabitacionesNOhabilitadas();
-//        //Habitacion con categoria 3 se encuentra en refaccion
+//        
 //        int total = 0;
 //        System.out.println("Habitaciones en refaccion: ");
 //        for(Habitacion h : re){
@@ -136,11 +137,11 @@ public class GranHotel {
 //            total1+=1;
 //         }
 //            System.out.println("El total de habitaciones habilitadas: "+ total1);
-        
+//        
 //            CategoriaData c = new CategoriaData(con);
 //            System.out.println(c.buscarCategoria(1));
 //        
-//        
+        
         
     }
     

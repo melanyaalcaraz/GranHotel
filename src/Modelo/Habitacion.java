@@ -12,7 +12,7 @@ package Modelo;
 public class Habitacion {
     
     private int idHabitacion;
-    private boolean estado;
+    
     private Categoria categoria;
     private int nroHabitacion;
     private int piso;
@@ -21,17 +21,15 @@ public class Habitacion {
     public Habitacion() {
     }
 
-    public Habitacion(int idHabitacion, boolean estado, Categoria categoria, int nroHabitacion, int piso, boolean refaccion) {
+    public Habitacion(int idHabitacion, Categoria categoria, int nroHabitacion, int piso, boolean refaccion) {
         this.idHabitacion = idHabitacion;
-        this.estado = estado;
         this.categoria = categoria;
         this.nroHabitacion = nroHabitacion;
         this.piso = piso;
         this.refaccion = refaccion;
     }
 
-    public Habitacion(boolean estado, Categoria categoria, int nroHabitacion, int piso, boolean refaccion) {
-        this.estado = estado;
+    public Habitacion(Categoria categoria, int nroHabitacion, int piso, boolean refaccion) {
         this.categoria = categoria;
         this.nroHabitacion = nroHabitacion;
         this.piso = piso;
@@ -45,14 +43,6 @@ public class Habitacion {
 
     public void setIdHabitacion(int idHabitacion) {
         this.idHabitacion = idHabitacion;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
     }
 
     public Categoria getCategoria() {
@@ -98,7 +88,7 @@ public class Habitacion {
 
     @Override
     public String toString() {
-        return "Habitacion{" + "idHabitacion=" + idHabitacion + ", estado=" + estado + ", idCategoria=" + categoria + ", nroHabitacion=" + nroHabitacion + ", piso=" + piso + '}';
+        return "Habitacion{" + "idHabitacion=" + idHabitacion + ", idCategoria=" + categoria + ", nroHabitacion=" + nroHabitacion + ", piso=" + piso + '}';
     }
 
 }

@@ -29,23 +29,21 @@ public class HabitacionData {
         try {
             this.con = conexion.getConexion();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error de cone111xion.");
+            JOptionPane.showMessageDialog(null, "Error de conexion.");
         }
 
     }
 
     public void agregarHabitacion(Habitacion habitacion) {
 
-        String sql = "INSERT INTO habitacion(estado, idCategoria, nmroHabitacion, piso,refaccion) "
-                + "VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO habitacion(idCategoria, nmroHabitacion, piso, refaccion) "
+                + "VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-            ps.setInt(1, habitacion.isEstado() ? 1 : 0); // if reducido
-            ps.setInt(2, habitacion.obtengoIdCategoria());
-            ps.setInt(3, habitacion.getNroHabitacion());
-            ps.setInt(4, habitacion.getPiso());
-            ps.setInt(5, habitacion.isRefaccion() ? 1 : 0);
+            ps.setInt(1, habitacion.obtengoIdCategoria());
+            ps.setInt(2, habitacion.getNroHabitacion());
+            ps.setInt(3, habitacion.getPiso());
+            ps.setInt(4, habitacion.isRefaccion() ? 1 : 0);
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -65,25 +63,23 @@ public class HabitacionData {
     
     public Habitacion modificarHabitacion(int id, Habitacion habitacion) {
 
-        String sql = "UPDATE habitacion SET estado=?,idCategoria=?,"
-                + "nmroHabitacion =?, piso=?, refaccion=? WHERE idHabitacion=?";
+        String sql = "UPDATE habitacion SET idCategoria=?, nmroHabitacion =?, piso=?, refaccion=? WHERE idHabitacion=?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, habitacion.isEstado());
-            ps.setInt(2, habitacion.obtengoIdCategoria());
-            ps.setInt(3, habitacion.getNroHabitacion());
-            ps.setInt(4, habitacion.getPiso());
-            ps.setBoolean(5, habitacion.isRefaccion());
-            ps.setInt(6, id);
+            ps.setInt(1, habitacion.obtengoIdCategoria());
+            ps.setInt(2, habitacion.getNroHabitacion());
+            ps.setInt(3, habitacion.getPiso());
+            ps.setBoolean(4, habitacion.isRefaccion());
+            ps.setInt(5, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo modificar el alumno.");
+            JOptionPane.showMessageDialog(null, "No se pudo modificar la habitacion.");
         }
         return habitacion;
     }
@@ -91,7 +87,7 @@ public class HabitacionData {
     public void eliminarHabitacion(int id) {
 
         try {
-            String sql = "UPDATE habitacion SET estado = 0 WHERE idHabitacion = ? ";
+            String sql = "UPDATE habitacion SET refaccion = 1 WHERE idHabitacion = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -106,7 +102,7 @@ public class HabitacionData {
     public Habitacion buscarHabitacion(int id) {
          Habitacion h1 = new Habitacion();
         
-        String sql = "SELECT h.estado, c.idCategoria, h.nmroHabitacion, h.piso, h.refaccion FROM habitacion h , categoria c "
+        String sql = "SELECT c.idCategoria, h.nmroHabitacion, h.piso, h.refaccion FROM habitacion h , categoria c "
                 + " WHERE h.idCategoria= c.idCategoria and h.idHabitacion =?";
         PreparedStatement ps = null;
         try {
@@ -117,13 +113,12 @@ public class HabitacionData {
             if (rs.next()) {
                Conexion con = new Conexion();
                 h1.setIdHabitacion(id);
-                h1.setEstado(rs.getBoolean("estado"));
                 h1.setNroHabitacion(rs.getInt("nmroHabitacion"));
                 h1.setPiso(rs.getInt("piso"));
                 h1.setRefaccion(rs.getBoolean("refaccion"));
 
                 Categoria cat= buscarCategoria(rs.getInt("idCategoria"));
-                int idCategoria= cat.getIdCategoria();
+                cat.getIdCategoria();
                 h1.setCategoria(cat);
                 
                 JOptionPane.showMessageDialog(null, "Habitacion encontrada.");
@@ -147,7 +142,7 @@ public class HabitacionData {
     public List<Habitacion> obtenerHabitacionesXCategoria(int idCat) {
         List<Habitacion> hab = new ArrayList<>();
         Habitacion h1 = new Habitacion();
-        String sql = "SELECT idHabitacion, idCategoria, nmroHabitacion, piso FROM habitacion  WHERE idCategoria =? and estado=1 and refaccion=0";
+        String sql = "SELECT idHabitacion, idCategoria, nmroHabitacion, piso FROM habitacion  WHERE idCategoria =? and refaccion=0";
         PreparedStatement ps = null;
         
         try {
@@ -177,7 +172,7 @@ public class HabitacionData {
      public List<Habitacion> obtenerHabitacionesNOhabilitadas() {
         List<Habitacion> hab = new ArrayList<>();
 
-        String sql = "SELECT idHabitacion, idCategoria, nmroHabitacion, piso FROM habitacion  WHERE estado=0 and refaccion=1";
+        String sql = "SELECT idHabitacion, idCategoria, nmroHabitacion, piso FROM habitacion  WHERE refaccion=1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -206,7 +201,7 @@ public class HabitacionData {
      public List<Habitacion> obtenerHabitacionesHabilitadas() {
         List<Habitacion> hab = new ArrayList<>();
 
-        String sql = "SELECT idHabitacion, idCategoria, nmroHabitacion, piso FROM habitacion  WHERE estado=1 and refaccion=0";
+        String sql = "SELECT idHabitacion, idCategoria, nmroHabitacion, piso FROM habitacion  WHERE refaccion=0";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -233,14 +228,13 @@ public class HabitacionData {
      
       public Habitacion habilitarHabitacion(int id, Habitacion habitacion) {
 
-        String sql = "UPDATE habitacion SET estado=?,refaccion=? WHERE idHabitacion=?";
+        String sql = "UPDATE habitacion SET refaccion=? WHERE idHabitacion=?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, habitacion.isEstado());
-            ps.setBoolean(2, habitacion.isRefaccion());
-            ps.setInt(3, id);
+            ps.setBoolean(1, habitacion.isRefaccion());
+            ps.setInt(2, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Habitacion habilitada.");
@@ -253,14 +247,13 @@ public class HabitacionData {
     }
       public Habitacion deshabilitarHabitacion(int id, Habitacion habitacion) {
 
-        String sql = "UPDATE habitacion SET estado=?,refaccion=? WHERE idHabitacion=?";
+        String sql = "UPDATE habitacion SET refaccion=? WHERE idHabitacion=?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, habitacion.isEstado());
-            ps.setBoolean(2, habitacion.isRefaccion());
-            ps.setInt(3, id);
+            ps.setBoolean(1, habitacion.isRefaccion());
+            ps.setInt(2, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Habitacion habilitada.");

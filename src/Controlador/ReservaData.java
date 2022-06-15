@@ -142,7 +142,7 @@ public class ReservaData {
         List<Habitacion> habitaciones = new ArrayList<>();
           
         try {
-            String sql = "SELECT * FROM habitacion WHERE estado = 1 and refaccion=0 and idHabitacion not in"
+            String sql = "SELECT * FROM habitacion WHERE refaccion=0 and idHabitacion not in"
                     + " (SELECT idHabitacion FROM reserva)";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -151,7 +151,6 @@ public class ReservaData {
             while(rs.next()){
                 hab = new Habitacion();
                 hab.setIdHabitacion(rs.getInt("idHabitacion"));
-                hab.setEstado(rs.getBoolean("estado"));
                 hab.setNroHabitacion(rs.getInt("nmroHabitacion"));
                 hab.setPiso(rs.getInt("piso"));
                 hab.setRefaccion(rs.getBoolean("refaccion"));
