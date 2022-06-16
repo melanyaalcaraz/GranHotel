@@ -9,6 +9,7 @@ import Controlador.CategoriaData;
 import Controlador.Conexion;
 import Controlador.HabitacionData;
 import Controlador.HuespedData;
+import Controlador.ReservaData;
 
 import Modelo.Categoria;
 import Modelo.Habitacion;
@@ -30,12 +31,12 @@ public class GranHotel {
         // TODO code application logic here
         
         Conexion con = new Conexion();
-        
+        /*
         Huesped h1= new Huesped("Maria", "Perez", 12, "abejas", "@correo", "1234",true);
         Huesped h2= new Huesped("Lucia", "Celi", 415, "luciernagas", "@correo1", "4321",true);
         Huesped h3= new Huesped("Benjamin", "Bilotta", 784, "mariposas", "@correo3", "741258", true);
-        
-        HuespedData huespedd= new HuespedData(con);
+        */
+       // HuespedData huespedd= new HuespedData(con);
 //               huespedd.guardarHuesped(h1);
 //               huespedd.guardarHuesped(h2);
 //               huespedd.guardarHuesped(h3);
@@ -73,7 +74,7 @@ public class GranHotel {
 //                huespedd.listarHuespedes().forEach(huesped-> {System.out.println("hueped"+huesped);});
         
         
-        
+        /*
         HabitacionData hd = new HabitacionData(con);
         Categoria cat1= new Categoria(5,2,3,1,"single",100,true);
         Categoria cat2= new Categoria(6,2,1,1,"doble",100,true);
@@ -83,7 +84,7 @@ public class GranHotel {
         Habitacion  hab2 = new Habitacion(cat2,2,1,false);
         Habitacion  hab3 = new Habitacion(cat3,25,1,true);
         Habitacion  hab4 = new Habitacion(cat3,4,1,false);
-        
+        */
 //          hd.agregarHabitacion(hab1);
 //          hd.agregarHabitacion(hab2);
 //          hd.agregarHabitacion(hab3);
@@ -140,8 +141,14 @@ public class GranHotel {
 //        
 //            CategoriaData c = new CategoriaData(con);
 //            System.out.println(c.buscarCategoria(1));
-//        
+//       
+         System.out.println("primera");
+        ReservaData rd = new ReservaData(con);
+         System.out.println("segunda");
+         System.out.println(rd.obtenerHabitacionesLibres());
+         
         
+
         
     }
     

@@ -12,7 +12,6 @@ package Modelo;
 public class Habitacion {
     
     private int idHabitacion;
-    
     private Categoria categoria;
     private int nroHabitacion;
     private int piso;

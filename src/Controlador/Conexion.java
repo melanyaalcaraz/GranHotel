@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
     
 public class Conexion {
   
-    private String url="jdbc:mysql://localhost/hotelgrande";
+    private String url="jdbc:mysql://localhost/granhotel";
     private String usuario="root";
     private String password="";
 
@@ -20,7 +20,7 @@ public class Conexion {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
-           JOptionPane.showMessageDialog(null, "Error de conexion.");
+           JOptionPane.showMessageDialog(null, "Error de conexion claseConexion.");
         }
         
     }
@@ -43,7 +43,7 @@ public class Conexion {
                         .getConnection(url + "?useLegacyDatetimeCode=false&serverTimezone=UTC"
                                 + "&user=" + usuario + "&password=" + password);
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de conexion."); ;
+                JOptionPane.showMessageDialog(null, "Error de conexion obtieneConexion."); ;
             }
         }
         return conexion;

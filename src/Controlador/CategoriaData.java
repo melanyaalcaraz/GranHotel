@@ -34,8 +34,8 @@ public class CategoriaData {
                 ps.setInt(1, categoria.getIdCategoria());
                 ps.setInt(2, categoria.getCantPersonas());
                 ps.setInt(3, categoria.getCantCamas());
-                ps.setString(4, categoria.getTipoCama());
-                ps.setInt(5, categoria.getTipoHabitacion());
+                ps.setInt(4, categoria.getTipoCama());
+                ps.setString(5, categoria.getTipoHabitacion());
                 ps.setDouble(6, categoria.getPrecio());
                 ps.setInt(7, categoria.isActivo() ? 1 : 0);
                 
@@ -65,8 +65,8 @@ public class CategoriaData {
             ps.setInt(1, categoria.getIdCategoria());
             ps.setInt(2, categoria.getCantPersonas());
             ps.setInt(3, categoria.getCantCamas());
-            ps.setString(4, categoria.getTipoCama());
-            ps.setInt(5, categoria.getTipoHabitacion());
+            ps.setInt(4, categoria.getTipoCama());
+            ps.setString(5, categoria.getTipoHabitacion());
             ps.setDouble(6, categoria.getPrecio());
             ps.setBoolean(7, categoria.isActivo());
             
@@ -99,8 +99,8 @@ public class CategoriaData {
                 categoria.setIdCategoria(rs.getInt("IdCategoria"));
                 categoria.setCantCamas(rs.getInt("cantCamas"));
                 categoria.setCantPersonas(rs.getInt("cantPersonas"));
-                categoria.setTipoCama((String) rs.getString("tipoCamas"));
-                categoria.setTipoHabitacion(rs.getInt("tipoHabitacion"));
+                categoria.setTipoCama(rs.getInt("tipoCamas"));
+                categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 
                 
                 JOptionPane.showMessageDialog(null, "Categoria encontrada.");

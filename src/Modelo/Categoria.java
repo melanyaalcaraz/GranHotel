@@ -9,15 +9,15 @@ public class Categoria {
     private int idCategoria;
     private int cantPersonas;
     private int cantCamas;
-    private String tipoCama;
-    private int tipoHabitacion;
+    private int tipoCama;
+    private String tipoHabitacion;
     private double precio;
     private boolean activo;
 
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, int cantPersonas, int cantCamas, String tipoCama, int tipoHabitacion, double precio, boolean activo) {
+    public Categoria(int idCategoria, int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion, double precio, boolean activo) {
         this.idCategoria = idCategoria;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
@@ -27,7 +27,7 @@ public class Categoria {
         this.activo = activo;
     }
 
-    public Categoria(int cantPersonas, int cantCamas, String tipoCama, int tipoHabitacion) {
+    public Categoria(int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion) {
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;
@@ -58,19 +58,19 @@ public class Categoria {
         this.cantCamas = cantCamas;
     }
 
-    public String getTipoCama() {
+    public int getTipoCama() {
         return tipoCama;
     }
 
-    public void setTipoCama(String tipoCama) {
+    public void setTipoCama(int tipoCama) {
         this.tipoCama = tipoCama;
     }
 
-    public int getTipoHabitacion() {
+    public String getTipoHabitacion() {
         return tipoHabitacion;
     }
 
-    public void setTipoHabitacion(int tipoHabitacion) {
+    public void setTipoHabitacion(String tipoHabitacion) {
         this.tipoHabitacion = tipoHabitacion;
     }
 
@@ -89,6 +89,12 @@ public class Categoria {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Categoria{" + "idCategoria" + idCategoria + ", cantPersonas=" + cantPersonas + ", cantCamas=" + cantCamas + ", tipoCama=" + tipoCama + ", tipoHabitacion=" + tipoHabitacion + ", precio=" + precio + ", activo=" + activo + '}';
+    }
+  
     
     
 }
