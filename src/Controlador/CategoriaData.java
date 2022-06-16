@@ -103,7 +103,7 @@ public class CategoriaData {
                 categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 
                 
-                JOptionPane.showMessageDialog(null, "Categoria encontrada.");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No existe una categoria con ese id.");
             }

@@ -121,7 +121,7 @@ public class HabitacionData {
                 cat.getIdCategoria();
                 h1.setCategoria(cat);
                 
-                JOptionPane.showMessageDialog(null, "Habitacion encontrada.");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No existe una habitacion con ese id.");
             }
@@ -226,15 +226,14 @@ public class HabitacionData {
         return hab;
     }
      
-      public Habitacion habilitarHabitacion(int id, Habitacion habitacion) {
-
-        String sql = "UPDATE habitacion SET refaccion=? WHERE idHabitacion=?";
+     public void habilitarHabitacion(int id) {
+        String sql = "UPDATE habitacion SET refaccion=1 WHERE idHabitacion=?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, habitacion.isRefaccion());
-            ps.setInt(2, id);
+           
+            ps.setInt(1, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Habitacion habilitada.");
@@ -243,26 +242,24 @@ public class HabitacionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo habilitar la habitacion.");
         }
-        return habitacion;
     }
-      public Habitacion deshabilitarHabitacion(int id, Habitacion habitacion) {
+      public void deshabilitarHabitacion(int id) {
 
-        String sql = "UPDATE habitacion SET refaccion=? WHERE idHabitacion=?";
+        String sql = "UPDATE habitacion SET refaccion=0 WHERE idHabitacion=?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, habitacion.isRefaccion());
-            ps.setInt(2, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Habitacion habilitada.");
+            JOptionPane.showMessageDialog(null, "Habitacion en refaccion.");
             
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo habilitar la habitacion.");
         }
-        return habitacion;
+        
     }
     
     

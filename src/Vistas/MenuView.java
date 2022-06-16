@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Color;
+
 /**
  *
  * @author La Bestia
@@ -16,6 +18,8 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setSize(450, 420); 
     }
 
     /**
@@ -27,66 +31,71 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuHuesped = new javax.swing.JMenu();
+        itemHuesped = new javax.swing.JMenuItem();
+        menuCategoria = new javax.swing.JMenu();
+        itemCategoria = new javax.swing.JMenuItem();
+        MenuHabitacion = new javax.swing.JMenu();
+        itemHabitacion = new javax.swing.JMenuItem();
+        menuReserva = new javax.swing.JMenu();
+        itemReserva = new javax.swing.JMenuItem();
+        menuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Huesped");
+        menuHuesped.setText("Huesped");
 
-        jMenuItem1.setText("Agregar Huesped");
-        jMenu1.add(jMenuItem1);
+        itemHuesped.setText("Agregar Huesped");
+        menuHuesped.add(itemHuesped);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuHuesped);
 
-        jMenu2.setText("Habitacion");
+        menuCategoria.setText("Categoria");
 
-        jMenuItem2.setText("Agregar Habitacion");
-        jMenu2.add(jMenuItem2);
+        itemCategoria.setText("Categorias");
+        menuCategoria.add(itemCategoria);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuCategoria);
 
-        jMenu3.setText("Categoria");
+        MenuHabitacion.setText("Habitacion");
 
-        jMenuItem3.setText("Categorias");
-        jMenu3.add(jMenuItem3);
+        itemHabitacion.setText("Formulario habitacion");
+        itemHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHabitacionActionPerformed(evt);
+            }
+        });
+        MenuHabitacion.add(itemHabitacion);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(MenuHabitacion);
 
-        jMenu4.setText("Reserva");
+        menuReserva.setText("Reserva");
 
-        jMenuItem4.setText("Reservas");
-        jMenu4.add(jMenuItem4);
+        itemReserva.setText("Reservas");
+        menuReserva.add(itemReserva);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuReserva);
 
-        jMenu5.setText("Salir");
-
-        jMenuItem5.setText("Salir");
-        jMenu5.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu5);
+        menuSalir.setText("Salir");
+        menuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSalirActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(menuSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -94,15 +103,30 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void itemHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHabitacionActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioHabitacionView habitacion = new FormularioHabitacionView();
+        habitacion.setVisible(true);
+        habitacion.getContentPane().setBackground(new Color(68, 167, 132));
+        escritorio.add(habitacion);
+    }//GEN-LAST:event_itemHabitacionActionPerformed
+
+    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_menuSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,17 +164,16 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu MenuHabitacion;
+    private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem itemCategoria;
+    private javax.swing.JMenuItem itemHabitacion;
+    private javax.swing.JMenuItem itemHuesped;
+    private javax.swing.JMenuItem itemReserva;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu menuCategoria;
+    private javax.swing.JMenu menuHuesped;
+    private javax.swing.JMenu menuReserva;
+    private javax.swing.JMenu menuSalir;
     // End of variables declaration//GEN-END:variables
 }
