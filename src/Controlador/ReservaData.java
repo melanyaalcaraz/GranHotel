@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -50,12 +52,12 @@ public class ReservaData {
 
             if (rs.next()) {
                 reser.setIdReserva(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Inscripcion agregada con exito.");
+                JOptionPane.showMessageDialog(null, "Habitacion Reservada con exito.");
             } else {
-                JOptionPane.showMessageDialog(null, "No pudo ser añadido correctamente.");
+                JOptionPane.showMessageDialog(null, "No pudo ser reservada correctamente.");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error intenro al reservar.");
+            JOptionPane.showMessageDialog(null, "Error intentar al reservar.");
         }
 
     }
@@ -100,33 +102,54 @@ public class ReservaData {
             ps.setInt(1, idHuesped);
             ps.setInt(2, idHabitacion);
 
-            ps.executeUpdate();
+           int exito=ps.executeUpdate();
+           if(exito==1){
+                JOptionPane.showMessageDialog(null, "Se anulo la reserva.");
+           }else{
+               JOptionPane.showMessageDialog(null, "No existe una reserva con esos id combinados.");
+           }
 
             ps.close();
-
+           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al borrar.");
         }
     }
 
-    public List<Habitacion> obtenerHabitacionesOcupadas() {
+    public List<Habitacion> obtenerHabitacionesOcupadas(LocalDate fechaInicio, LocalDate fechaFin) {
         List<Habitacion> habitaciones = new ArrayList<>();
 
         try {
-            String sql = "select *\n"
-                    + "from reserva r\n"
-                    + "where ('?' >= r.fechaInicio\n"
-                    + "and '?' <= r.fechaFin)\n"
-                    + "or ('?' >= r.fechaInicio\n"
-                    + "and '?' <= r.fechaFin)\n"
+            String sql = "select h.idHabitacion, h.idCategoria, h.nmroHabitacion, h.piso, h.refaccion \n"
+                    + "from reserva r, habitacion h \n"
+                    + "where (? >= r.fechaInicio \n"
+                    + "and ? <= r.fechaFin)\n"
+                    + "or (? >= r.fechaInicio \n"
+                    + "and ? <= r.fechaFin)\n"
                     + "and r.activo=true";
             PreparedStatement ps = con.prepareStatement(sql);
+            //localDate a Date
+            ps.setDate(1, Date.valueOf(fechaInicio));
+            ps.setDate(2, Date.valueOf(fechaInicio));
+            ps.setDate(3, Date.valueOf(fechaFin ));
+            ps.setDate(4, Date.valueOf(fechaFin));
+            
             ResultSet rs = ps.executeQuery();
-            Habitacion hab;
-
+            
             while (rs.next()) {
+            Habitacion hab= new Habitacion();
+            Huesped hues;
+            Reserva res= new Reserva();
+            Categoria cat= new Categoria();
                 hab = buscarHabitacion(rs.getInt("idHabitacion"));
+                hab.setNroHabitacion(rs.getInt("nmroHabitacion"));
+                hab.setPiso(rs.getInt("piso"));
+                cat = buscarCategoria(rs.getInt("idCategoria"));
+                hab.setCategoria(cat);
+
                 habitaciones.add(hab);
+                
+                
             }
             ps.close();
         } catch (SQLException ex) {
@@ -135,39 +158,44 @@ public class ReservaData {
         return habitaciones;
     }
 
-    public List<Habitacion> obtenerHabitacionesLibres() {
+    public List<Habitacion> obtenerHabitacionesLibres( LocalDate fechaInicio, LocalDate fechaFin) {
         List<Habitacion> habitaciones = new ArrayList<>();
-
         try {
-            String sql = "select h.idHabitacion, h.idCategoria, h.nmroHabitacion, h.piso, h.refaccion\n"
-                    + "from habitacion h , categoria c \n"
-                    + "where h.idCategoria=c.idCategoria \n"
-                    + "and  h.refaccion = 0\n"
-                    + "and c.cantPersonas >= 2 \n"
-                    + "and h.idHabitacion not in (select r.idHabitacion\n"
-                    + "from reserva r\n"
-                    + "where ('2022/06/21' >= r.fechaInicio\n"
-                    + "and '2022/06/21' <= r.fechaFin)\n"
-                    + "or ('2022/06/28' >= r.fechaInicio\n"
-                    + "and '2022/06/28' <= r.fechaFin)\n"
+            String sql = "select h.idHabitacion, h.idCategoria, h.nmroHabitacion, h.piso, h.refaccion from habitacion h , categoria c \n"
+                    + "where h.idCategoria=c.idCategoria and  h.refaccion = 0 and c.cantPersonas >= 2 \n"
+                    + "and h.idHabitacion not in (select r.idHabitacion from reserva r \n"
+                    + "where (? >= r.fechaInicio \n" 
+                    + "and ? <= r.fechaFin)\n" 
+                    + "or (? >= r.fechaInicio \n" 
+                    + "and ? <= r.fechaFin) \n" 
                     + "and r.activo=true)";
-
+            
             PreparedStatement ps = con.prepareStatement(sql);
+            //localDate a Date
+            ps.setDate(1, Date.valueOf(fechaInicio));
+            ps.setDate(2, Date.valueOf(fechaInicio));
+            ps.setDate(3, Date.valueOf(fechaFin ));
+            ps.setDate(4, Date.valueOf(fechaFin));
+            
+           
             ResultSet rs = ps.executeQuery();
-            Habitacion hab;
-
+           
             while (rs.next()) {
+                Habitacion hab;
+               
                 hab = buscarHabitacion(rs.getInt("idHabitacion"));
-               // Categoria cat = buscarCategoria(rs.getInt("idCategoria"));
-
+                hab.setNroHabitacion(rs.getInt("nmroHabitacion"));
+                hab.setPiso(rs.getInt("piso"));
+               Categoria cat = buscarCategoria(rs.getInt("idCategoria"));
+                int idCategoria=cat.getIdCategoria();
+                hab.modificoIdCategoria(idCategoria);
+                
                 habitaciones.add(hab);
             }
             ps.close();
-
-        } catch (SQLException ex) {
+         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener habitaciones sin reserva.");
         }
-
         return habitaciones;
     }
 

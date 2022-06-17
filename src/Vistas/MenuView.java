@@ -19,7 +19,7 @@ public class MenuView extends javax.swing.JFrame {
     public MenuView() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(450, 420); 
+        this.setSize(570, 520); 
     }
 
     /**
@@ -41,6 +41,7 @@ public class MenuView extends javax.swing.JFrame {
         itemHabitacion = new javax.swing.JMenuItem();
         menuReserva = new javax.swing.JMenu();
         itemReserva = new javax.swing.JMenuItem();
+        itemListado = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,7 +86,15 @@ public class MenuView extends javax.swing.JFrame {
         menuReserva.setText("Reserva");
 
         itemReserva.setText("Reservas");
+        itemReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReservaActionPerformed(evt);
+            }
+        });
         menuReserva.add(itemReserva);
+
+        itemListado.setText("Precio");
+        menuReserva.add(itemListado);
 
         jMenuBar1.add(menuReserva);
 
@@ -128,6 +137,16 @@ public class MenuView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_menuSalirActionPerformed
 
+    private void itemReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReservaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioReservaView habitacion = new FormularioReservaView();
+        habitacion.setVisible(true);
+        habitacion.getContentPane().setBackground(new Color(68, 167, 132));
+        escritorio.add(habitacion);
+    }//GEN-LAST:event_itemReservaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -169,6 +188,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemCategoria;
     private javax.swing.JMenuItem itemHabitacion;
     private javax.swing.JMenuItem itemHuesped;
+    private javax.swing.JMenuItem itemListado;
     private javax.swing.JMenuItem itemReserva;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCategoria;
