@@ -111,7 +111,7 @@ public class CategoriaData {
              
             if (rs.next()) {
                
-                categoria.setIdCategoria(rs.getInt("IdCategoria"));
+                categoria.setIdCategoria(id);
                 categoria.setCantCamas(rs.getInt("cantCamas"));
                 categoria.setCantPersonas(rs.getInt("cantPersonas"));
                 categoria.setTipoCama(rs.getInt("tipoCamas"));

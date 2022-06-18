@@ -46,9 +46,12 @@ public class MenuView extends javax.swing.JFrame {
         menuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gran Hotel Palace ");
         setMinimumSize(new java.awt.Dimension(700, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/recepcionista.png"))); // NOI18N
+        jLabel1.setLabelFor(escritorio);
+        jLabel1.setName(""); // NOI18N
 
         escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -156,8 +159,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemHabitacionActionPerformed
 
     private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void itemReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReservaActionPerformed
