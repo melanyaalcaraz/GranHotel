@@ -5,7 +5,15 @@
  */
 package Vistas;
 
+import com.jtattoo.plaf.mint.MintLookAndFeel;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -31,122 +39,119 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menuHuesped = new javax.swing.JMenu();
-        itemHuesped = new javax.swing.JMenuItem();
-        menuCategoria = new javax.swing.JMenu();
-        itemCategoria = new javax.swing.JMenuItem();
-        MenuHabitacion = new javax.swing.JMenu();
-        itemHabitacion = new javax.swing.JMenuItem();
-        menuReserva = new javax.swing.JMenu();
-        itemReserva = new javax.swing.JMenuItem();
-        itemListado = new javax.swing.JMenuItem();
-        menuSalir = new javax.swing.JMenu();
+        escritorio = new javax.swing.JDesktopPane(){
+            String str="/imagen/recepcionista.png";
+            ImageIcon icon = new ImageIcon(getClass().getResource(str));
+            Image image = icon.getImage();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gran Hotel Palace ");
-        setMinimumSize(new java.awt.Dimension(700, 600));
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
+            }};
+            jMenuBar1 = new javax.swing.JMenuBar();
+            menuHuesped = new javax.swing.JMenu();
+            itemHuesped = new javax.swing.JMenuItem();
+            menuCategoria = new javax.swing.JMenu();
+            itemCategoria = new javax.swing.JMenuItem();
+            MenuHabitacion = new javax.swing.JMenu();
+            itemHabitacion = new javax.swing.JMenuItem();
+            menuReserva = new javax.swing.JMenu();
+            itemReserva = new javax.swing.JMenuItem();
+            itemListado = new javax.swing.JMenuItem();
+            menuSalir = new javax.swing.JMenu();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/recepcionista.png"))); // NOI18N
-        jLabel1.setLabelFor(escritorio);
-        jLabel1.setName(""); // NOI18N
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setTitle("Gran Hotel Palace ");
+            setMinimumSize(new java.awt.Dimension(700, 600));
 
-        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+            javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+            escritorio.setLayout(escritorioLayout);
+            escritorioLayout.setHorizontalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 778, Short.MAX_VALUE)
+            );
+            escritorioLayout.setVerticalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 506, Short.MAX_VALUE)
+            );
 
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+            menuHuesped.setText("Huesped");
 
-        menuHuesped.setText("Huesped");
+            itemHuesped.setText("Agregar Huesped");
+            itemHuesped.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    itemHuespedActionPerformed(evt);
+                }
+            });
+            menuHuesped.add(itemHuesped);
 
-        itemHuesped.setText("Agregar Huesped");
-        itemHuesped.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemHuespedActionPerformed(evt);
-            }
-        });
-        menuHuesped.add(itemHuesped);
+            jMenuBar1.add(menuHuesped);
 
-        jMenuBar1.add(menuHuesped);
+            menuCategoria.setText("Categoria");
 
-        menuCategoria.setText("Categoria");
+            itemCategoria.setText("Categorias");
+            itemCategoria.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    itemCategoriaActionPerformed(evt);
+                }
+            });
+            menuCategoria.add(itemCategoria);
 
-        itemCategoria.setText("Categorias");
-        itemCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCategoriaActionPerformed(evt);
-            }
-        });
-        menuCategoria.add(itemCategoria);
+            jMenuBar1.add(menuCategoria);
 
-        jMenuBar1.add(menuCategoria);
+            MenuHabitacion.setText("Habitacion");
 
-        MenuHabitacion.setText("Habitacion");
+            itemHabitacion.setText("Formulario habitacion");
+            itemHabitacion.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    itemHabitacionActionPerformed(evt);
+                }
+            });
+            MenuHabitacion.add(itemHabitacion);
 
-        itemHabitacion.setText("Formulario habitacion");
-        itemHabitacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemHabitacionActionPerformed(evt);
-            }
-        });
-        MenuHabitacion.add(itemHabitacion);
+            jMenuBar1.add(MenuHabitacion);
 
-        jMenuBar1.add(MenuHabitacion);
+            menuReserva.setText("Reserva");
 
-        menuReserva.setText("Reserva");
+            itemReserva.setText("Reservas");
+            itemReserva.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    itemReservaActionPerformed(evt);
+                }
+            });
+            menuReserva.add(itemReserva);
 
-        itemReserva.setText("Reservas");
-        itemReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemReservaActionPerformed(evt);
-            }
-        });
-        menuReserva.add(itemReserva);
+            itemListado.setText("Precio");
+            menuReserva.add(itemListado);
 
-        itemListado.setText("Precio");
-        menuReserva.add(itemListado);
+            jMenuBar1.add(menuReserva);
 
-        jMenuBar1.add(menuReserva);
+            menuSalir.setText("Salir");
+            menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    menuSalirMouseClicked(evt);
+                }
+            });
+            jMenuBar1.add(menuSalir);
 
-        menuSalir.setText("Salir");
-        menuSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSalirActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(menuSalir);
+            setJMenuBar(jMenuBar1);
 
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(escritorio)
+                    .addGap(23, 23, 23))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(escritorio)
-                .addGap(23, 23, 23))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
+            );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void itemHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHabitacionActionPerformed
         // TODO add your handling code here:
@@ -157,10 +162,6 @@ public class MenuView extends javax.swing.JFrame {
         habitacion.getContentPane().setBackground(new Color(68, 167, 132));
         escritorio.add(habitacion);
     }//GEN-LAST:event_itemHabitacionActionPerformed
-
-    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_menuSalirActionPerformed
 
     private void itemReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReservaActionPerformed
         // TODO add your handling code here:
@@ -190,6 +191,10 @@ public class MenuView extends javax.swing.JFrame {
         escritorio.add(huesped);
     }//GEN-LAST:event_itemHuespedActionPerformed
 
+    private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
+         dispose();
+    }//GEN-LAST:event_menuSalirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -218,8 +223,13 @@ public class MenuView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+     java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    UIManager.setLookAndFeel(new MintLookAndFeel());
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 new MenuView().setVisible(true);
             }
         });
@@ -233,7 +243,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemHuesped;
     private javax.swing.JMenuItem itemListado;
     private javax.swing.JMenuItem itemReserva;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCategoria;
     private javax.swing.JMenu menuHuesped;
