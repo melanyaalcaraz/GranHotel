@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
 
 import Controlador.Conexion;
@@ -62,7 +58,6 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         boxHuesped = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        radioHabReservadas = new javax.swing.JRadioButton();
         radioHabLibres = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -81,18 +76,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         radioEstado = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
 
+        setTitle("Reserva");
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Seleccione un huesped:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Reservas:");
-
-        radioHabReservadas.setText("Habitaciones reservadas");
-        radioHabReservadas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioHabReservadasActionPerformed(evt);
-            }
-        });
 
         radioHabLibres.setText("Habitaciones libres");
         radioHabLibres.addActionListener(new java.awt.event.ActionListener() {
@@ -190,42 +180,39 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                                     .addGap(106, 106, 106))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(34, 34, 34)
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(36, 36, 36)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(14, 14, 14)
-                                            .addComponent(buttonReservar)
-                                            .addGap(67, 67, 67)
-                                            .addComponent(buttonAnular)
-                                            .addGap(82, 82, 82)
-                                            .addComponent(buttonSalir))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(36, 36, 36)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jLabel8))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(radioEstado)
-                                                .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel8))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(radioEstado)
+                                        .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(38, 38, 38)
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(37, 37, 37)
-                                    .addComponent(radioHabReservadas)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(radioHabLibres))
-                                .addGroup(layout.createSequentialGroup()
                                     .addGap(164, 164, 164)
-                                    .addComponent(jLabel3))))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                                    .addComponent(jLabel3))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(110, 110, 110)
+                                    .addComponent(buttonReservar)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(buttonAnular)
+                                    .addGap(57, 57, 57)
+                                    .addComponent(buttonSalir))))
+                        .addGap(0, 8, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(radioHabLibres)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,12 +245,10 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioHabReservadas)
-                    .addComponent(radioHabLibres))
+                .addComponent(radioHabLibres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonReservar)
                     .addComponent(buttonAnular)
@@ -307,7 +292,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                 estado=false;
             }
             
-            Reserva re = new Reserva(hab,hues,fechaI, fechaF,precio,cantPersonas,estado);
+            Reserva re = new Reserva(hab,hues,fechaI,fechaF,precio,cantPersonas,estado);
             
             resData.reservar(re);
             borrarFilaTabla();
@@ -331,25 +316,15 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             int idHabitacion= hab.getIdHabitacion();
             resData.anularReserva(idHuesped, idHabitacion);
            // borrarFilaTabla();
-            cargaHabReservadas();
+            
        } 
            
        
     }//GEN-LAST:event_buttonAnularActionPerformed
 
-    private void radioHabReservadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioHabReservadasActionPerformed
-        // TODO add your handling code here:
-        //borrarFilaTabla();
-        radioHabLibres.setSelected(false);
-        cargaHabReservadas();
-        buttonAnular.setEnabled(true);
-        buttonReservar.setEnabled(false);
-    }//GEN-LAST:event_radioHabReservadasActionPerformed
-
     private void radioHabLibresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioHabLibresActionPerformed
         // TODO add your handling code here:
         borrarFilaTabla();
-        radioHabReservadas.setSelected(false);
         cargaHabLibres();
         buttonAnular.setEnabled(false);
         buttonReservar.setEnabled(true);
@@ -394,6 +369,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
+    /*
      private void cargaHabReservadas(){
         //borrarFilasTabla();
         
@@ -414,6 +390,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         });
          
     }
+    */
     
     private void cargaHabLibres(){
         //borrarFilasTabla();
@@ -459,6 +436,5 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JRadioButton radioEstado;
     private javax.swing.JRadioButton radioHabLibres;
-    private javax.swing.JRadioButton radioHabReservadas;
     // End of variables declaration//GEN-END:variables
 }

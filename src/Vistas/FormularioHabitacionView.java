@@ -56,6 +56,8 @@ public class FormularioHabitacionView extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jtIdCategoria = new javax.swing.JTextField();
 
+        setTitle("Habitacion");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Habitacion");
 
@@ -309,9 +311,9 @@ public class FormularioHabitacionView extends javax.swing.JInternalFrame {
             } else {
                 estado = false;
             }
-            Habitacion alumno = new Habitacion(cat, nmro, piso, estado);
+            Habitacion habitacion = new Habitacion(cat, nmro, piso, estado);
 
-            ad.agregarHabitacion(alumno);
+            ad.agregarHabitacion(habitacion);
         } else {
             JOptionPane.showMessageDialog(this, "Hay campos para revisar, no deben quedar vacios");
         }

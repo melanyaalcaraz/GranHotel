@@ -32,6 +32,7 @@ public class MenuView extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuHuesped = new javax.swing.JMenu();
         itemHuesped = new javax.swing.JMenuItem();
@@ -45,21 +46,35 @@ public class MenuView extends javax.swing.JFrame {
         menuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 600));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/recepcionista.png"))); // NOI18N
+
+        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         menuHuesped.setText("Huesped");
 
         itemHuesped.setText("Agregar Huesped");
+        itemHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHuespedActionPerformed(evt);
+            }
+        });
         menuHuesped.add(itemHuesped);
 
         jMenuBar1.add(menuHuesped);
@@ -67,6 +82,11 @@ public class MenuView extends javax.swing.JFrame {
         menuCategoria.setText("Categoria");
 
         itemCategoria.setText("Categorias");
+        itemCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCategoriaActionPerformed(evt);
+            }
+        });
         menuCategoria.add(itemCategoria);
 
         jMenuBar1.add(menuCategoria);
@@ -112,7 +132,10 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(escritorio)
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,6 +169,24 @@ public class MenuView extends javax.swing.JFrame {
         habitacion.getContentPane().setBackground(new Color(68, 167, 132));
         escritorio.add(habitacion);
     }//GEN-LAST:event_itemReservaActionPerformed
+
+    private void itemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategoriaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioCategoriaView categoria = new FormularioCategoriaView();
+        categoria.setVisible(true);
+        categoria.getContentPane().setBackground(new Color(68, 167, 132));
+        escritorio.add(categoria);
+    }//GEN-LAST:event_itemCategoriaActionPerformed
+
+    private void itemHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHuespedActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioHuespedView huesped = new FormularioHuespedView();
+        huesped.setVisible(true);
+        huesped.getContentPane().setBackground(new Color(68, 167, 132));
+        escritorio.add(huesped);
+    }//GEN-LAST:event_itemHuespedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +231,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemHuesped;
     private javax.swing.JMenuItem itemListado;
     private javax.swing.JMenuItem itemReserva;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCategoria;
     private javax.swing.JMenu menuHuesped;

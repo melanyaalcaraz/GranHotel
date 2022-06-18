@@ -115,7 +115,7 @@ public class ReservaData {
             JOptionPane.showMessageDialog(null, "Error al borrar.");
         }
     }
-
+    /*
     public List<Habitacion> obtenerHabitacionesOcupadas(LocalDate fechaInicio, LocalDate fechaFin) {
         List<Habitacion> habitaciones = new ArrayList<>();
 
@@ -157,7 +157,7 @@ public class ReservaData {
         }
         return habitaciones;
     }
-
+*/
     public List<Habitacion> obtenerHabitacionesLibres( LocalDate fechaInicio, LocalDate fechaFin) {
         List<Habitacion> habitaciones = new ArrayList<>();
         try {

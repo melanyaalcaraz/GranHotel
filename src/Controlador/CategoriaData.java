@@ -85,6 +85,21 @@ public class CategoriaData {
        return(categoria);
     }
     
+    public void eliminarCategoria(int id){
+        try {
+            String sql = "UPDATE `categoria` SET `idCategoria`= ? WHERE`activo`= 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ps.close();
+            JOptionPane.showMessageDialog(null, " Se eliminó la categoria.");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " No se pudo eliminar la categoria.");
+        }
+    }
+    
+    
     public Categoria buscarCategoria(int id){
         String sql = "SELECT * FROM categoria  WHERE idCategoria =?";
         PreparedStatement ps = null;
@@ -101,8 +116,8 @@ public class CategoriaData {
                 categoria.setCantPersonas(rs.getInt("cantPersonas"));
                 categoria.setTipoCama(rs.getInt("tipoCamas"));
                 categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
-                
-                
+                categoria.setPrecio(rs.getDouble("precio"));
+                categoria.setActivo(rs.getBoolean("activo"));
                 
             } else {
                 JOptionPane.showMessageDialog(null, "No existe una categoria con ese id.");
@@ -132,6 +147,7 @@ public class CategoriaData {
             JOptionPane.showMessageDialog(null, "Error al actualizar precio.");
         }
     }
+    
     
 }
 

@@ -34,6 +34,17 @@ public class Categoria {
         this.tipoHabitacion = tipoHabitacion;
     }
 
+    public Categoria(int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion, double precio, boolean activo) {
+        this.cantPersonas = cantPersonas;
+        this.cantCamas = cantCamas;
+        this.tipoCama = tipoCama;
+        this.tipoHabitacion = tipoHabitacion;
+        this.precio = precio;
+        this.activo = activo;
+    }
+    
+    
+    
     public int getIdCategoria() {
         return idCategoria;
     }
