@@ -63,19 +63,19 @@ public class ReservaData {
     }
 
     public Reserva modificarReserva(int idReserva, Reserva reserva) {
-        String sql = "UPDATE `reserva` SET `idReserva`= ? ,`idHabitacion`= ? ,`idHuesped`= ? ,`fechaInicio`= ? ,`fechaFin`= ? ,`precioTotal`= ? ,`cantPersonas`= ? ,`activo`= ? , WHERE 1";
+        String sql = "UPDATE reserva SET idHabitacion= ? ,idHuesped= ? ,fechaInicio= ? ,fechaFin= ? ,precioTotal= ? ,cantPersonas= ? ,activo= ? , WHERE idCategoria = ?";
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-
-            ps.setInt(1, reserva.getIdReserva());
-            ps.setInt(2, reserva.veoIdHabitacion());
-            ps.setInt(3, reserva.veoIdHuesped());
-            ps.setDate(4, Date.valueOf(reserva.getFechaInicio()));
-            ps.setDate(5, Date.valueOf(reserva.getFechaFin()));
-            ps.setDouble(6, reserva.getPrecioTotal());
-            ps.setInt(7, reserva.getCantPersonas());
+            
+            ps.setInt(1, reserva.veoIdHabitacion());
+            ps.setInt(2, reserva.veoIdHuesped());
+            ps.setDate(3, Date.valueOf(reserva.getFechaInicio()));
+            ps.setDate(4, Date.valueOf(reserva.getFechaFin()));
+            ps.setDouble(5, reserva.getPrecioTotal());
+            ps.setInt(6, reserva.getCantPersonas());
+            ps.setBoolean(7, true);
 
             int hecho = ps.executeUpdate();
 
@@ -115,7 +115,7 @@ public class ReservaData {
             JOptionPane.showMessageDialog(null, "Error al borrar.");
         }
     }
-    /*
+    
     public List<Habitacion> obtenerHabitacionesOcupadas(LocalDate fechaInicio, LocalDate fechaFin) {
         List<Habitacion> habitaciones = new ArrayList<>();
 
@@ -157,7 +157,7 @@ public class ReservaData {
         }
         return habitaciones;
     }
-*/
+
     public List<Habitacion> obtenerHabitacionesLibres( LocalDate fechaInicio, LocalDate fechaFin) {
         List<Habitacion> habitaciones = new ArrayList<>();
         try {

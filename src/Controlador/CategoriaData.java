@@ -28,7 +28,7 @@ public class CategoriaData {
     }
     
     public void añadirCategoria (Categoria categoria){
-        String sql = "INSERT INTO `categoria`(`idCategoria`, `cantPersonas`, `cantCamas`, `tipoCamas`, `tipoHabitacion`, `precio`, `activo`) VALUES (' ? , ? , ? , ? , ? , ? , ? ')";
+        String sql = "INSERT INTO categoria(idCategoria, cantPersonas, cantCamas, tipoCamas, tipoHabitacion, precio, activo) VALUES (?,?,?,?,?,?,?)";
             try{
                 PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, categoria.getIdCategoria());
@@ -55,24 +55,26 @@ public class CategoriaData {
     
     }
     
-    public Categoria modificarCategoria(Categoria categoria){
-         String sql="UPDATE `categoria` SET `idCategoria`= ? ,`cantPersonas`= ? ,`cantCamas`= ? ,`tipoCamas`= ? ,`tipoHabitacion`= ? ,`precio`= ? ,`activo`= ? WHERE 1";
+    public Categoria modificarCategoria(int idCategoria, Categoria categoria){
+         String sql="UPDATE categoria SET cantPersonas= ? ,cantCamas= ? ,tipoCamas= ? ,tipoHabitacion= ? ,precio= ? ,activo= ? WHERE idCategoria = ? ";
         PreparedStatement ps=null;
        
         try {
             ps = con.prepareStatement(sql);
             
-            ps.setInt(1, categoria.getIdCategoria());
-            ps.setInt(2, categoria.getCantPersonas());
-            ps.setInt(3, categoria.getCantCamas());
-            ps.setInt(4, categoria.getTipoCama());
-            ps.setString(5, categoria.getTipoHabitacion());
-            ps.setDouble(6, categoria.getPrecio());
-            ps.setBoolean(7, categoria.isActivo());
+            ps.setInt(1, categoria.getCantPersonas());
+            ps.setInt(2, categoria.getCantCamas());
+            ps.setInt(3, categoria.getTipoCama());
+            ps.setString(4, categoria.getTipoHabitacion());
+            ps.setDouble(5, categoria.getPrecio());
+            ps.setBoolean(6, categoria.isActivo());
+            
+            ps.setInt(7, idCategoria);
             
             int hecho = ps.executeUpdate();
     
             categoria.setIdCategoria(categoria.getIdCategoria());
+            
             if(hecho==1)
              JOptionPane.showMessageDialog(null, "La categoria fue modificada con exito");
             else

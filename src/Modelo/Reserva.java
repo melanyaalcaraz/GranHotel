@@ -25,6 +25,17 @@ public class Reserva {
     public Reserva() {
     }
 
+    public Reserva(Habitacion habitacion, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal, int cantPersonas, boolean activo) {
+        this.habitacion = habitacion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
+        this.cantPersonas = cantPersonas;
+        this.activo = activo;
+    }
+
+    
+    
     public Reserva(Habitacion habitacion, Huesped huesped, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal, int cantPersonas, boolean activo) {
         this.habitacion = habitacion;
         this.huesped = huesped;

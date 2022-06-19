@@ -8,8 +8,12 @@ package Vistas;
 import Controlador.Conexion;
 import Controlador.HuespedData;
 import Modelo.Huesped;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,7 +24,11 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaHuesped
      */
+    
+    FondoPanel fondo = new FondoPanel();
+    
     public FormularioHuespedView() {
+        this.setContentPane(fondo);
         initComponents();
         this.setSize(600, 500);
         inicializar();
@@ -68,18 +76,15 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Huesped");
-        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Huesped");
         jLabel1.setPreferredSize(new java.awt.Dimension(500, 400));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 10, 85, 27);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(24, 90, 54, 17);
 
         jTNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -90,13 +95,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTNombreKeyTyped(evt);
             }
         });
-        getContentPane().add(jTNombre);
-        jTNombre.setBounds(108, 87, 232, 23);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(24, 130, 50, 17);
 
         jTApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -107,13 +109,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTApellidoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTApellido);
-        jTApellido.setBounds(108, 127, 232, 23);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Dni:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(24, 164, 25, 17);
 
         jTDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTDni.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -124,13 +123,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTDniKeyTyped(evt);
             }
         });
-        getContentPane().add(jTDni);
-        jTDni.setBounds(108, 161, 233, 23);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Domicilio:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(24, 198, 58, 17);
 
         jTDomicilio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -138,13 +134,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTDomicilioKeyPressed(evt);
             }
         });
-        getContentPane().add(jTDomicilio);
-        jTDomicilio.setBounds(108, 195, 232, 23);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Correo:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(24, 232, 47, 17);
 
         jTCorreo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -152,13 +145,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTCorreoKeyPressed(evt);
             }
         });
-        getContentPane().add(jTCorreo);
-        jTCorreo.setBounds(108, 229, 232, 23);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefono:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(24, 266, 57, 17);
 
         jTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -166,8 +156,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTelefonoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTelefono);
-        jTelefono.setBounds(108, 263, 232, 23);
 
         jBGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBGuardar.setText("Guardar");
@@ -176,8 +164,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBGuardar);
-        jBGuardar.setBounds(24, 336, 81, 25);
 
         jBSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBSalir.setText("Salir");
@@ -186,13 +172,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBSalir);
-        jBSalir.setBounds(440, 336, 57, 25);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Id Huesped:");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(24, 53, 74, 17);
 
         jTID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTID.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -203,8 +186,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jTIDKeyTyped(evt);
             }
         });
-        getContentPane().add(jTID);
-        jTID.setBounds(108, 51, 232, 23);
 
         jBModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBModificar.setText("Modificar");
@@ -213,8 +194,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBModificar);
-        jBModificar.setBounds(129, 336, 85, 25);
 
         jBEliminar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBEliminar.setText("Eliminar");
@@ -223,8 +202,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBEliminar);
-        jBEliminar.setBounds(232, 336, 79, 25);
 
         jBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBuscar.setText("Confirmar Busqueda");
@@ -233,17 +210,10 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBuscar);
-        jBuscar.setBounds(393, 141, 157, 25);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Activo:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(24, 297, 43, 17);
-        getContentPane().add(jRBActivo);
-        jRBActivo.setBounds(108, 297, 21, 21);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(24, 40, 526, 10);
 
         jBNuevo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBNuevo.setText("Nuevo Huesped");
@@ -252,8 +222,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jBNuevo);
-        jBNuevo.setBounds(393, 50, 157, 25);
 
         jBLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
@@ -262,8 +230,6 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBLimpiar);
-        jBLimpiar.setBounds(329, 336, 75, 25);
 
         jBNuevaBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBNuevaBusqueda.setText("Nueva busqueda");
@@ -272,8 +238,131 @@ public class FormularioHuespedView extends javax.swing.JInternalFrame {
                 jBNuevaBusquedaActionPerformed(evt);
             }
         });
-        getContentPane().add(jBNuevaBusqueda);
-        jBNuevaBusqueda.setBounds(393, 98, 157, 25);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addGap(63, 63, 63))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(84, 84, 84)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                        .addComponent(jTCorreo)
+                                        .addComponent(jTelefono))
+                                    .addComponent(jRBActivo)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTID, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTApellido)
+                                            .addComponent(jTNombre)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(jBGuardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBEliminar)))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBuscar)
+                            .addComponent(jBNuevaBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 37, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(48, 390, Short.MAX_VALUE)
+                .addComponent(jBLimpiar)
+                .addGap(18, 18, 18)
+                .addComponent(jBSalir)
+                .addGap(61, 61, 61))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jBNuevo))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jBNuevaBusqueda)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBuscar)))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(jRBActivo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBGuardar)
+                    .addComponent(jBModificar)
+                    .addComponent(jBEliminar)
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBSalir))
+                .addGap(36, 36, 36))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -541,4 +630,16 @@ evt.consume();
     private javax.swing.JTextField jTNombre;
     private javax.swing.JTextField jTelefono;
     // End of variables declaration//GEN-END:variables
+
+    class FondoPanel extends JPanel{
+        private Image imagen;
+        @Override
+        public void paint (Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/imagen/huesped1.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+          
+    }
 }

@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import Controlador.Conexion;
@@ -9,12 +8,17 @@ import Modelo.Categoria;
 import Modelo.Habitacion;
 import Modelo.Huesped;
 import Modelo.Reserva;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,23 +30,25 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormularioReservaView
      */
+    FondoPanel fondo = new FondoPanel();
+
     private HuespedData HuesData;
     private ReservaData resData;
     private HabitacionData habData;
-    
+
     private ArrayList<Huesped> listaH;
     private ArrayList<Habitacion> listaHab;
     private Conexion conexion;
     private DefaultTableModel modelo;
-        
+
     public FormularioReservaView() {
         initComponents();
         conexion = new Conexion();
         HuesData = new HuespedData(conexion);
-        listaH = (ArrayList<Huesped>)HuesData.listarHuespedes();
+        listaH = (ArrayList<Huesped>) HuesData.listarHuespedes();
         modelo = (DefaultTableModel) jTable1.getModel();
         cargaHuesped();
-        
+
     }
 
     /**
@@ -54,35 +60,97 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new FondoPanel()
+        ;
+        jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         boxHuesped = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        fechaInicio = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        fechaFin = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jtCantPersonas = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        radioEstado = new javax.swing.JRadioButton();
+        jtPrecio = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         radioHabLibres = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        fechaFin = new com.toedter.calendar.JDateChooser();
-        fechaInicio = new com.toedter.calendar.JDateChooser();
         buttonReservar = new javax.swing.JButton();
         buttonAnular = new javax.swing.JButton();
         buttonSalir = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jtCantPersonas = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jtPrecio = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        radioEstado = new javax.swing.JRadioButton();
-        jLabel9 = new javax.swing.JLabel();
+        jBModificar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jTNumeroHab = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTidReserva = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setTitle("Reserva");
+        setMinimumSize(new java.awt.Dimension(500, 500));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Reservas:");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione un huesped:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Reservas:");
+        jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Fecha Inicio:");
+
+        jLabel5.setFont(new java.awt.Font("Lucida Calligraphy", 0, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Fecha Fin:");
+
+        jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Cantidad de personas:");
+
+        jtCantPersonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtCantPersonasActionPerformed(evt);
+            }
+        });
+        jtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCantPersonasKeyTyped(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Lucida Calligraphy", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Estado:");
+
+        jtPrecio.setText("$");
+        jtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtPrecioActionPerformed(evt);
+            }
+        });
+        jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtPrecioKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Lucida Calligraphy", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Precio:");
+
+        jLabel9.setFont(new java.awt.Font("Lucida Calligraphy", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Listado de Habitaciones:");
 
         radioHabLibres.setText("Habitaciones libres");
         radioHabLibres.addActionListener(new java.awt.event.ActionListener() {
@@ -103,10 +171,6 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-
-        jLabel4.setText("Fecha Inicio:");
-
-        jLabel5.setText("Fecha Fin:");
 
         buttonReservar.setText("Reservar");
         buttonReservar.addActionListener(new java.awt.event.ActionListener() {
@@ -129,131 +193,179 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Cantidad de personas:");
-
-        jtCantPersonas.addActionListener(new java.awt.event.ActionListener() {
+        jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtCantPersonasActionPerformed(evt);
+                jBModificarActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Precio:");
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Numero de Habitacion:");
 
-        jtPrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtPrecioActionPerformed(evt);
+        jLabel10.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("id Reserva:");
+
+        jTidReserva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTidReservaKeyTyped(evt);
             }
         });
 
-        jLabel8.setText("Estado:");
+        jRadioButton1.setText("Habitaciones Ocupadas");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setText("Listado de Habitaciones:");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(76, 76, 76))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(60, 60, 60)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(56, 56, 56)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(radioEstado)
+                                                .addGap(109, 109, 109)
+                                                .addComponent(jLabel4))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(78, 78, 78)
+                                                .addComponent(jLabel5)))
+                                        .addGap(57, 57, 57)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTNumeroHab, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTidReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(136, 136, 136)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addGap(108, 108, 108)
+                                        .addComponent(radioHabLibres))
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 14, Short.MAX_VALUE)))
+                .addGap(0, 15, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(buttonReservar)
+                        .addGap(29, 29, 29)
+                        .addComponent(buttonAnular)
+                        .addGap(64, 64, 64)
+                        .addComponent(jBModificar)
+                        .addGap(28, 28, 28)
+                        .addComponent(buttonSalir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTidReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4)
+                                        .addComponent(radioEstado)))))
+                        .addGap(55, 55, 55))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTNumeroHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioHabLibres)
+                    .addComponent(jRadioButton1))
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonReservar)
+                    .addComponent(buttonAnular)
+                    .addComponent(buttonSalir)
+                    .addComponent(jBModificar))
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(jLabel9))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(106, 106, 106))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(34, 34, 34)
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(36, 36, 36)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel8))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(radioEstado)
-                                        .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(38, 38, 38)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(164, 164, 164)
-                                    .addComponent(jLabel3))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(110, 110, 110)
-                                    .addComponent(buttonReservar)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(buttonAnular)
-                                    .addGap(57, 57, 57)
-                                    .addComponent(buttonSalir))))
-                        .addGap(0, 8, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(radioHabLibres)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioEstado)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(radioHabLibres)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonReservar)
-                    .addComponent(buttonAnular)
-                    .addComponent(buttonSalir))
-                .addGap(32, 32, 32))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -266,73 +378,78 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
 
     private void buttonReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReservarActionPerformed
         // TODO add your handling code here:
-         if (vacio()) {
-        resData= new ReservaData(conexion);
-        int filaSeleccionada = jTable1.getSelectedRow();
-        if(filaSeleccionada!= -1){
-            Huesped hues = (Huesped)boxHuesped.getSelectedItem();
-             habData= new HabitacionData(conexion);
-             Habitacion hab= habData.buscarHabitacion((int)jTable1.getValueAt((int)jTable1.getSelectedRow(),0) );
-            
-            //JCalendar --> Date--> LocalDate
-            Date fecha1 = fechaInicio.getDate();
-            LocalDate fechaI = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            Date fecha2 = fechaFin.getDate();
-            LocalDate fechaF = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            //String--> Double
-            String pre=jtPrecio.getText();
-            Double precio = Double.parseDouble(pre);
-            //String-->Int
-            String cant= jtCantPersonas.getText();
-            int cantPersonas= Integer.parseInt(cant);
-            boolean estado;
-            if(radioEstado.isSelected()){
-                estado=true;
-            }else{
-                estado=false;
+        if (vacio()) {
+            resData = new ReservaData(conexion);
+            int filaSeleccionada = jTable1.getSelectedRow();
+            if (filaSeleccionada != -1) {
+                Huesped hues = (Huesped) boxHuesped.getSelectedItem();
+                habData = new HabitacionData(conexion);
+                Habitacion hab = habData.buscarHabitacion((int) jTable1.getValueAt((int) jTable1.getSelectedRow(), 0));
+
+                //JCalendar --> Date--> LocalDate
+                Date fecha1 = fechaInicio.getDate();
+                LocalDate fechaI = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                Date fecha2 = fechaFin.getDate();
+                LocalDate fechaF = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                //String--> Double
+                String pre = jtPrecio.getText();
+                Double precio = Double.parseDouble(pre);
+                //String-->Int
+                String cant = jtCantPersonas.getText();
+                int cantPersonas = Integer.parseInt(cant);
+                boolean estado;
+                if (radioEstado.isSelected()) {
+                    estado = true;
+                } else {
+                    estado = false;
+                }
+
+                Reserva re = new Reserva(hab, hues, fechaI, fechaF, precio, cantPersonas, estado);
+
+                resData.reservar(re);
+                borrarFilaTabla();
+            } else {
+                JOptionPane.showMessageDialog(this, "Hay campos para revisar, no deben quedar vacios");
             }
-            
-            Reserva re = new Reserva(hab,hues,fechaI,fechaF,precio,cantPersonas,estado);
-            
-            resData.reservar(re);
-            borrarFilaTabla();
-        }else {
-            JOptionPane.showMessageDialog(this, "Hay campos para revisar, no deben quedar vacios");
-        }}
-         
+        }
+
     }//GEN-LAST:event_buttonReservarActionPerformed
 
     private void buttonAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnularActionPerformed
         // TODO add your handling code here:
-        resData= new ReservaData(conexion);
-        habData= new HabitacionData(conexion);
+        resData = new ReservaData(conexion);
+        habData = new HabitacionData(conexion);
         int filaSeleccionada = jTable1.getSelectedRow();
-       
-           if(filaSeleccionada!= -1){
+
+        if (filaSeleccionada != -1) {
             //modelo.setRowCount(0);
-            Huesped hues = (Huesped)boxHuesped.getSelectedItem();
-            int idHuesped=hues.getIdhuesped();
-            Habitacion hab= habData.buscarHabitacion((int)jTable1.getValueAt((int)jTable1.getSelectedRow(),0) );
-            int idHabitacion= hab.getIdHabitacion();
+            Huesped hues = (Huesped) boxHuesped.getSelectedItem();
+            int idHuesped = hues.getIdhuesped();
+            Habitacion hab = habData.buscarHabitacion((int) jTable1.getValueAt((int) jTable1.getSelectedRow(), 0));
+            int idHabitacion = hab.getIdHabitacion();
             resData.anularReserva(idHuesped, idHabitacion);
-           // borrarFilaTabla();
-            
-       } 
-           
-       
+            // borrarFilaTabla();
+
+        }
+
+
     }//GEN-LAST:event_buttonAnularActionPerformed
 
     private void radioHabLibresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioHabLibresActionPerformed
         // TODO add your handling code here:
-        borrarFilaTabla();
-        cargaHabLibres();
-        buttonAnular.setEnabled(false);
-        buttonReservar.setEnabled(true);
+        if (vacio()) {
+            borrarFilaTabla();
+            cargaHabLibres();
+            buttonAnular.setEnabled(false);
+            buttonReservar.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor complete los campos del formulario");
+        }
     }//GEN-LAST:event_radioHabLibresActionPerformed
 
     private void jtCantPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCantPersonasActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             int cant = Integer.parseInt(jtCantPersonas.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El dato no es numerico, vuelve a ingresarlo ");
@@ -343,7 +460,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
 
     private void jtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPrecioActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             int precio = Integer.parseInt(jtPrecio.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El dato no es numerico, vuelve a ingresarlo ");
@@ -352,24 +469,80 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtPrecioActionPerformed
 
-     public void limpiar() {
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        Conexion con = new Conexion();
+        ReservaData reserd = new ReservaData(con);
+        
+        if (vacio()){
+            JOptionPane.showMessageDialog(null, "Hay campos vacios, verifique antes de modificar");
+        }else{
+            
+            Huesped hues = new HuespedData(con).buscarHuesped((boxHuesped.getSelectedIndex()));
+            hues.getIdhuesped();
+                    
+            Habitacion habi = new HabitacionData(con).buscarHabitacion(Integer.parseInt(jTNumeroHab.getText()));
+            habi.getIdHabitacion();
+            
+            int idReserva = Integer.parseInt(jTidReserva.getText());
+            
+            //Date inicio = LocalDate(fechaInicio.getDate());
+            //Date fin = LocalDate(fechaFin.getDate());
+            double precio = Double.parseDouble(jtPrecio.getText());
+            int cantiPersonas = (Integer.parseInt(jtCantPersonas.getText()));
+            boolean activo = radioEstado.isSelected();
+            
+            //Reserva reserva = new Reserva(habi,hues,inicio,fin,precio,cantiPersonas,activo);
+            
+            //reserd.modificarReserva(idReserva, reserva);
+        }
+        
+
+    }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
+        noNumero(evt);
+    }//GEN-LAST:event_jtPrecioKeyTyped
+
+    private void jtCantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCantPersonasKeyTyped
+        noNumero(evt);
+    }//GEN-LAST:event_jtCantPersonasKeyTyped
+
+    private void jTidReservaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTidReservaKeyTyped
+        noNumero(evt);
+    }//GEN-LAST:event_jTidReservaKeyTyped
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        if (vacio()) {
+            borrarFilaTabla();
+            cargaHabReservadas();
+            buttonAnular.setEnabled(false);
+            buttonReservar.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor complete los campos del formulario");
+        }
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    public void limpiar() {
         jtCantPersonas.setText("");
         jtPrecio.setText("");
         radioEstado.setSelected(false);
     }
-    private void cargaHuesped(){ // Carga al combo box
-        for(Huesped item: listaH){
+
+    private void cargaHuesped() { // Carga al combo box
+        for (Huesped item : listaH) {
             boxHuesped.addItem(item);
         }
     }
-    private void borrarFilaTabla(){
-        int indice = modelo.getRowCount() -1;
-        
-        for (int i = indice;i>=0;i--){
+
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+
+        for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
     }
-    /*
+
+    
      private void cargaHabReservadas(){
         //borrarFilasTabla();
         
@@ -390,29 +563,43 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         });
          
     }
-    */
     
-    private void cargaHabLibres(){
+
+    private void cargaHabLibres() {
         //borrarFilasTabla();
         Date fecha1 = fechaInicio.getDate();
         LocalDate fechaI = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         Date fecha2 = fechaFin.getDate();
         LocalDate fechaF = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        resData= new ReservaData(conexion);
-        List <Habitacion> lista =  resData.obtenerHabitacionesLibres(fechaI, fechaF);
+        resData = new ReservaData(conexion);
+        List<Habitacion> lista = resData.obtenerHabitacionesLibres(fechaI, fechaF);
         modelo.setRowCount(0);
-        for(Habitacion h : lista){
-            modelo.addRow(new Object[] { h.getIdHabitacion(), h.getNroHabitacion(), h.obtengoIdCategoria(), h.isRefaccion(), h.getPiso()});
+        for (Habitacion h : lista) {
+            modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNroHabitacion(), h.obtengoIdCategoria(), h.isRefaccion(), h.getPiso()});
         }
     }
-     private boolean vacio() {
+
+    private boolean vacio() {
         String str = "";
-        if (!str.equals(jtPrecio.getText()) && !str.equals(jtCantPersonas.getText())) {
+        if (!str.equals(jtPrecio.getText()) && !str.equals(jtCantPersonas.getText()) && !str.equals(fechaInicio.getDate()) && !str.equals(fechaFin.getDate()) && !str.equals(jtPrecio.getText())) {
             return true;
         } else {
             return false;
         }
     }
+    
+    public void noNumero(java.awt.event.KeyEvent evt) {
+        if (!Character.isDigit(evt.getKeyChar())) {  //getToolkit().beep();
+            evt.consume();
+        }
+    }
+
+    public void noCaracter(java.awt.event.KeyEvent evt) {
+        if (!(Character.isLetter(evt.getKeyChar()) || evt.getKeyChar() == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Huesped> boxHuesped;
@@ -421,6 +608,9 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     private javax.swing.JButton buttonSalir;
     private com.toedter.calendar.JDateChooser fechaFin;
     private com.toedter.calendar.JDateChooser fechaInicio;
+    private javax.swing.JButton jBModificar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -429,12 +619,32 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField jTNumeroHab;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTidReserva;
     private javax.swing.JTextField jtCantPersonas;
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JRadioButton radioEstado;
     private javax.swing.JRadioButton radioHabLibres;
     // End of variables declaration//GEN-END:variables
+
+    class FondoPanel extends JPanel {
+
+        private Image imagen;
+
+        @Override
+        public void paint(Graphics g) {
+            imagen = new ImageIcon(getClass().getResource("/imagen/reserva2.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+
+    }
+
 }

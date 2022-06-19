@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
 
 import com.jtattoo.plaf.mint.MintLookAndFeel;
@@ -40,7 +36,7 @@ public class MenuView extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane(){
-            String str="/imagen/recepcionista.png";
+            String str="/imagen/hotel2.jpg";
             ImageIcon icon = new ImageIcon(getClass().getResource(str));
             Image image = icon.getImage();
 
@@ -51,18 +47,19 @@ public class MenuView extends javax.swing.JFrame {
             jMenuBar1 = new javax.swing.JMenuBar();
             menuHuesped = new javax.swing.JMenu();
             itemHuesped = new javax.swing.JMenuItem();
-            menuCategoria = new javax.swing.JMenu();
-            itemCategoria = new javax.swing.JMenuItem();
             MenuHabitacion = new javax.swing.JMenu();
             itemHabitacion = new javax.swing.JMenuItem();
             menuReserva = new javax.swing.JMenu();
             itemReserva = new javax.swing.JMenuItem();
-            itemListado = new javax.swing.JMenuItem();
+            menuCategoria = new javax.swing.JMenu();
+            itemCategoria = new javax.swing.JMenuItem();
             menuSalir = new javax.swing.JMenu();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-            setTitle("Gran Hotel Palace ");
+            setTitle("Gran Hotel Palace - Sistema de Reservas");
             setMinimumSize(new java.awt.Dimension(700, 600));
+
+            escritorio.setPreferredSize(new java.awt.Dimension(800, 600));
 
             javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
             escritorio.setLayout(escritorioLayout);
@@ -72,7 +69,7 @@ public class MenuView extends javax.swing.JFrame {
             );
             escritorioLayout.setVerticalGroup(
                 escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 506, Short.MAX_VALUE)
+                .addGap(0, 508, Short.MAX_VALUE)
             );
 
             menuHuesped.setText("Huesped");
@@ -86,18 +83,6 @@ public class MenuView extends javax.swing.JFrame {
             menuHuesped.add(itemHuesped);
 
             jMenuBar1.add(menuHuesped);
-
-            menuCategoria.setText("Categoria");
-
-            itemCategoria.setText("Categorias");
-            itemCategoria.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    itemCategoriaActionPerformed(evt);
-                }
-            });
-            menuCategoria.add(itemCategoria);
-
-            jMenuBar1.add(menuCategoria);
 
             MenuHabitacion.setText("Habitacion");
 
@@ -121,10 +106,19 @@ public class MenuView extends javax.swing.JFrame {
             });
             menuReserva.add(itemReserva);
 
-            itemListado.setText("Precio");
-            menuReserva.add(itemListado);
-
             jMenuBar1.add(menuReserva);
+
+            menuCategoria.setText("Categoria");
+
+            itemCategoria.setText("Categorias");
+            itemCategoria.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    itemCategoriaActionPerformed(evt);
+                }
+            });
+            menuCategoria.add(itemCategoria);
+
+            jMenuBar1.add(menuCategoria);
 
             menuSalir.setText("Salir");
             menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,12 +136,12 @@ public class MenuView extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(escritorio)
+                    .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
                     .addGap(23, 23, 23))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(escritorio)
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
             );
 
             pack();
@@ -241,7 +235,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemCategoria;
     private javax.swing.JMenuItem itemHabitacion;
     private javax.swing.JMenuItem itemHuesped;
-    private javax.swing.JMenuItem itemListado;
     private javax.swing.JMenuItem itemReserva;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCategoria;
