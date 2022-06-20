@@ -111,12 +111,8 @@ public class Huesped {
 
     @Override
     public String toString() {
-        return  idhuesped + ", " + nombre + ", " + Apellido + ", " + dni + ", " + domicilio + ", " + correo + ", " + telefono +  '}';
+        return   nombre + ", " + Apellido + ", " + dni ;
     }
-
-  
-  
-    
 
     @Override
     public int hashCode() {

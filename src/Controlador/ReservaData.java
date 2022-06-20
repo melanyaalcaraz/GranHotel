@@ -317,4 +317,33 @@ public class ReservaData {
         return cd.buscarCategoria(id);
 
     }
+    
+    public Categoria buscarReserva(int id){
+        String sql = "SELECT * FROM reserva  WHERE idReserva =?";
+        PreparedStatement ps = null;
+        Reserva reserva = new Reserva();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+             
+            if (rs.next()) {
+               
+                reserva.setIdReserva(id);
+                categoria.setCantCamas(rs.getInt("cantCamas"));
+                categoria.setCantPersonas(rs.getInt("cantPersonas"));
+                categoria.setTipoCama(rs.getInt("tipoCamas"));
+                categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
+                categoria.setPrecio(rs.getDouble("precio"));
+                categoria.setActivo(rs.getBoolean("activo"));
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe una categoria con ese id.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo buscar la categoria por problemas de conexion.");
+        }
+        return categoria;
+    }
 }
