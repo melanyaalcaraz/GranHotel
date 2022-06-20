@@ -318,33 +318,38 @@ public class ReservaData {
 
     }
     
-    public Categoria buscarReserva(int id){
+    public Reserva buscarReserva(int id){
         String sql = "SELECT * FROM reserva  WHERE idReserva =?";
         PreparedStatement ps = null;
         Reserva reserva = new Reserva();
-        Categoria categoria= new Categoria();
+        
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
              
             if (rs.next()) {
-               
-                reserva.setIdReserva(id);
-                categoria.setCantCamas(rs.getInt("cantCamas"));
-                categoria.setCantPersonas(rs.getInt("cantPersonas"));
-                categoria.setTipoCama(rs.getInt("tipoCamas"));
-                categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
-                categoria.setPrecio(rs.getDouble("precio"));
-                categoria.setActivo(rs.getBoolean("activo"));
                 
+                Habitacion hab = buscarHabitacion(rs.getInt("idHabitacion"));
+                Huesped hues = buscarHuesped(rs.getInt("idHuesped"));
+                
+                reserva.setIdReserva(id);
+                reserva.setHabitacion(hab);
+                reserva.setHuesped(hues);
+                reserva.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                reserva.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                reserva.setPrecioTotal(rs.getDouble("precio"));
+                reserva.setCantPersonas(rs.getInt("cantPersonas"));
+                reserva.setActivo(rs.getBoolean("activo"));
+               
+         
             } else {
-                JOptionPane.showMessageDialog(null, "No existe una categoria con ese id.");
+                JOptionPane.showMessageDialog(null, "No existe una reserva con ese id.");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo buscar la categoria por problemas de conexion.");
+            JOptionPane.showMessageDialog(null, "No se pudo buscar la reserva por problemas de conexion.");
         }
-        return categoria;
+        return reserva;
     }
 }

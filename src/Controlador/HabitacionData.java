@@ -261,6 +261,37 @@ public class HabitacionData {
         }
         
     }
+      
+       public List<Habitacion> listarHabitaciones() {
+
+        List<Habitacion> habitaciones = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM habitacion WHERE refaccion = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            Categoria c = new Categoria();
+            
+            while (rs.next()) {
+                
+                c = buscarCategoria(rs.getInt("idCategoria"));
+                
+                
+                Habitacion habitacion = new Habitacion();
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setCategoria(c);
+                habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                habitacion.setPiso(rs.getInt("piso"));
+                habitacion.setRefaccion(rs.getBoolean("activo"));
+                
+                habitaciones.add(habitacion);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,  "Error interno al armar la lista de habitaciones");
+        }
+        return habitaciones;
+    }
     
     
 

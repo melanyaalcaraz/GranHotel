@@ -17,6 +17,7 @@ public class Categoria {
     public Categoria() {
     }
 
+
     public Categoria(int idCategoria, int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion, double precio, boolean activo) {
         this.idCategoria = idCategoria;
         this.cantPersonas = cantPersonas;
