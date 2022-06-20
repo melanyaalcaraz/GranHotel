@@ -41,11 +41,11 @@ public class ReservaData {
             ps.setInt(1, reser.getIdReserva());
             ps.setInt(2, reser.getHabitacion().getIdHabitacion());
             ps.setInt(3, reser.getHuesped().getIdhuesped());
-            ps.setDate(3, Date.valueOf(reser.getFechaInicio()));
-            ps.setDate(4, Date.valueOf(reser.getFechaFin()));
-            ps.setDouble(5, reser.getPrecioTotal());
-            ps.setInt(6, reser.getCantPersonas());
-            ps.setInt(4, reser.isActivo() ? 1 : 0);
+            ps.setDate(4, Date.valueOf(reser.getFechaInicio()));
+            ps.setDate(5, Date.valueOf(reser.getFechaFin()));
+            ps.setDouble(6, reser.getPrecioTotal());
+            ps.setInt(7, reser.getCantPersonas());
+            ps.setInt(8, reser.isActivo() ? 1 : 0);
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
