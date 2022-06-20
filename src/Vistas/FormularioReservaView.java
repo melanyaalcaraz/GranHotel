@@ -530,8 +530,8 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             radioHabLibres.setSelected(false);
             borrarFilaTabla();
             cargaHabReservadas();
-            buttonAnular.setEnabled(false);
-            buttonReservar.setEnabled(true);
+            buttonAnular.setEnabled(true);
+            buttonReservar.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(null, "Por favor complete los campos del formulario");
         }
