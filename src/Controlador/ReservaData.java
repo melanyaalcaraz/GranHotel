@@ -322,6 +322,7 @@ public class ReservaData {
         String sql = "SELECT * FROM reserva  WHERE idReserva =?";
         PreparedStatement ps = null;
         Reserva reserva = new Reserva();
+        Categoria categoria= new Categoria();
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);

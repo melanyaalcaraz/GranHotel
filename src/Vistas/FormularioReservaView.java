@@ -337,11 +337,12 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fechaInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioEstado)
@@ -495,8 +496,11 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             
             int idReserva = Integer.parseInt(jTidReserva.getText());
             
-            Date inicio = LocalDate(fechaInicio.getDate());
-            Date fin = LocalDate. (fechaFin.getDate());
+            Date fecha1 = fechaInicio.getDate();
+            LocalDate inicio = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date fecha2 = fechaFin.getDate();
+            LocalDate fin = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
             double precio = Double.parseDouble(jtPrecio.getText());
             int cantiPersonas = (Integer.parseInt(jtCantPersonas.getText()));
             boolean activo = radioEstado.isSelected();
