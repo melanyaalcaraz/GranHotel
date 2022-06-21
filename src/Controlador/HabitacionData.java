@@ -270,15 +270,18 @@ public class HabitacionData {
             String sql = "SELECT * FROM habitacion WHERE refaccion = 0";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            Categoria c = new Categoria();
-            Habitacion habitacion = new Habitacion();
+            
+              
+                
+               
             
             while (rs.next()) {
                 
-               c.setIdCategoria(rs.getInt("idCategoria"));
+                Categoria c = new Categoria();
+                Habitacion habitacion = new Habitacion();
+                c.setIdCategoria(rs.getInt("idCategoria"));
                 
                 
-               
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setCategoria(c);
                 habitacion.setNroHabitacion(rs.getInt("nmroHabitacion"));

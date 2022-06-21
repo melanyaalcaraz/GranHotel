@@ -144,15 +144,18 @@ public class GranHotel {
 //            CategoriaData c = new CategoriaData(con);
 //            System.out.println(c.buscarCategoria(1));
 //       
-         System.out.println("primera");
+       /*  System.out.println("primera");
         ReservaData rd = new ReservaData(con);
          System.out.println("segunda");
          //System.out.println(rd.obtenerHabitacionesLibres(LocalDate.of(2022, Month.JUNE, 1),LocalDate.of(2022, Month.JUNE, 10)));
          
         CategoriaData cd = new CategoriaData(con);
          System.out.println(cd.buscarCategoria(2)); 
-
-        
+            
+*/
+       
+    
+       
     }
     
 }

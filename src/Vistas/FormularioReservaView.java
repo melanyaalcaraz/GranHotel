@@ -11,6 +11,7 @@ import Modelo.Reserva;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -226,6 +227,11 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         });
 
         jBBuscarId.setText("Buscar");
+        jBBuscarId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarIdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -264,7 +270,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(204, 204, 204)
                                                 .addComponent(jBBuscarId)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
                                 .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(32, 32, 32))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -283,14 +289,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(65, 65, 65)
+                        .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTidReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(87, 87, 87)))
-                .addGap(0, 15, Short.MAX_VALUE))
+                            .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTidReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101)))
+                .addGap(0, 20, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -311,12 +316,12 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,7 +335,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
@@ -372,7 +377,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addComponent(buttonAnular)
                     .addComponent(buttonSalir)
                     .addComponent(jBModificar))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -477,7 +482,6 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtCantPersonasActionPerformed
 
     private void jtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPrecioActionPerformed
-        // TODO add your handling code here:
         try {
             int precio = Integer.parseInt(jtPrecio.getText());
         } catch (NumberFormatException e) {
@@ -516,8 +520,6 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             
             reserd.modificarReserva(idReserva, reserva);
         }
-        
-
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
@@ -543,6 +545,40 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Por favor complete los campos del formulario");
         }
     }//GEN-LAST:event_jRHabOcupadasActionPerformed
+
+    private void jBBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarIdActionPerformed
+        Conexion con = new Conexion();
+        ReservaData rsdata = new ReservaData(con);
+        Reserva reser = new Reserva();
+        Habitacion hab = new Habitacion();
+        Huesped hues = new Huesped();
+        
+        
+       
+        
+        if(!jTidReserva.getText().equals("")){
+            reser = rsdata.buscarReserva(Integer.parseInt(jTidReserva.getText()));
+            
+            comboHabitacion.setSelectedItem(reser.getHabitacion());
+            boxHuesped.setSelectedItem(reser.getHuesped());
+            
+            LocalDate lc = reser.getFechaInicio();
+            Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            fechaInicio.setDate(date);
+            
+            LocalDate loc = reser.getFechaFin();
+            Date date2 = Date.from(loc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            fechaFin.setDate(date2);
+            
+            jtPrecio.setText(String.valueOf(reser.getPrecioTotal()));
+            jtCantPersonas.setText(String.valueOf(reser.getCantPersonas()));
+            radioEstado.setEnabled(reser.isActivo());
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El id no puede quedar vacio");
+        }
+       
+    }//GEN-LAST:event_jBBuscarIdActionPerformed
 
     public void limpiar() {
         jtCantPersonas.setText("");
