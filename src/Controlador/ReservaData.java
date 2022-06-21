@@ -63,7 +63,7 @@ public class ReservaData {
     }
 
     public Reserva modificarReserva(int idReserva, Reserva reserva) {
-        String sql = "UPDATE reserva SET idHabitacion= ? ,idHuesped= ? ,fechaInicio= ? ,fechaFin= ? ,precioTotal= ? ,cantPersonas= ? ,activo= ? , WHERE idCategoria = ?";
+        String sql = "UPDATE reserva SET idHabitacion= ? ,idHuesped= ? ,fechaInicio= ? ,fechaFin= ? ,precioTotal= ? ,cantPersonas= ? ,activo= ?  WHERE idReserva = ?;";
         PreparedStatement ps = null;
 
         try {
@@ -76,7 +76,7 @@ public class ReservaData {
             ps.setDouble(5, reserva.getPrecioTotal());
             ps.setInt(6, reserva.getCantPersonas());
             ps.setBoolean(7, true);
-
+            ps.setInt(8, idReserva);
             int hecho = ps.executeUpdate();
 
             reserva.setIdReserva(idReserva);
@@ -338,7 +338,7 @@ public class ReservaData {
                 reserva.setHuesped(hues);
                 reserva.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 reserva.setFechaFin(rs.getDate("fechaFin").toLocalDate());
-                reserva.setPrecioTotal(rs.getDouble("precio"));
+                reserva.setPrecioTotal(rs.getDouble("precioTotal"));
                 reserva.setCantPersonas(rs.getInt("cantPersonas"));
                 reserva.setActivo(rs.getBoolean("activo"));
                

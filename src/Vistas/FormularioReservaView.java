@@ -248,30 +248,26 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                         .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                        .addGap(32, 32, 32))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioEstado)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(204, 204, 204)
-                                                .addComponent(jBBuscarId)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
-                                .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addGap(8, 8, 8))
+                            .addComponent(radioEstado)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(204, 204, 204)
+                                .addComponent(jBBuscarId))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
@@ -316,12 +312,12 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +334,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +373,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addComponent(buttonAnular)
                     .addComponent(buttonSalir)
                     .addComponent(jBModificar))
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -499,11 +495,11 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Hay campos vacios, verifique antes de modificar");
         }else{
             
-            Huesped hues = new HuespedData(con).buscarHuesped((boxHuesped.getSelectedIndex()));
-            hues.getIdhuesped();
+            Huesped hues = new HuespedData(con).buscarHuesped(((Huesped) boxHuesped.getSelectedItem()).getIdhuesped());
+           // hues.getIdhuesped();
                     
-            Habitacion habi = new HabitacionData(con).buscarHabitacion((comboHabitacion.getSelectedIndex()));
-            habi.getIdHabitacion();
+            Habitacion habi = new HabitacionData(con).buscarHabitacion(((Habitacion)comboHabitacion.getSelectedItem()).getIdHabitacion());
+           // habi.getIdHabitacion();
             
             int idReserva = Integer.parseInt(jTidReserva.getText());
             
@@ -550,11 +546,8 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         Conexion con = new Conexion();
         ReservaData rsdata = new ReservaData(con);
         Reserva reser = new Reserva();
-        Habitacion hab = new Habitacion();
-        Huesped hues = new Huesped();
-        
-        
-       
+              
+          
         
         if(!jTidReserva.getText().equals("")){
             reser = rsdata.buscarReserva(Integer.parseInt(jTidReserva.getText()));
@@ -572,7 +565,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             
             jtPrecio.setText(String.valueOf(reser.getPrecioTotal()));
             jtCantPersonas.setText(String.valueOf(reser.getCantPersonas()));
-            radioEstado.setEnabled(reser.isActivo());
+            radioEstado.setSelected(reser.isActivo());
         }
         else{
             JOptionPane.showMessageDialog(null, "El id no puede quedar vacio");
@@ -643,13 +636,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         }
     }
 
-    private boolean vacio() {
+    private boolean vacio() { //vacio no controla si esta marcado radiobutton siempre se puede modificar de nuevo
+        boolean vacio=false;
         String str = "";
-        if (!str.equals(jtPrecio.getText()) && !str.equals(jtCantPersonas.getText()) && !str.equals(fechaInicio.getDate()) && !str.equals(fechaFin.getDate()) && !str.equals(jtPrecio.getText())) {
-            return true;
-        } else {
-            return false;
+        if (str.equals(jtPrecio.getText())||str.equals(jtCantPersonas.getText()) || fechaInicio.getDate()== fechaFin.getDate() || str.equals(jtPrecio.getText())) {
+            vacio= true;
         }
+        return(vacio);
     }
     
     public void noNumero(java.awt.event.KeyEvent evt) {
