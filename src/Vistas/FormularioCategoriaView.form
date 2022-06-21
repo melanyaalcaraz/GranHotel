@@ -80,13 +80,15 @@
                                   <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTTipoCama" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTCantCamas" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTCantPersonas" alignment="0" pref="111" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jTTipoHabitacion" min="-2" pref="172" max="-2" attributes="0"/>
                               <Component id="jTPrecio" min="-2" pref="107" max="-2" attributes="0"/>
                               <Component id="jREstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="comboCategorias" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTTipoHabitacion" alignment="0" pref="172" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -141,7 +143,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jTTipoCama" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboCategorias" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -161,7 +163,7 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel8" max="32767" attributes="0"/>
+                          <Component id="jLabel8" pref="24" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -374,11 +376,6 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTCantCamasKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTTipoCama">
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTTipoCamaKeyTyped"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jBEliminar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -399,6 +396,16 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboCategorias">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

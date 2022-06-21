@@ -6,9 +6,12 @@ import Modelo.Categoria;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import sun.java2d.pipe.SpanShapeRenderer.Simple;
 
 /**
  *
@@ -19,9 +22,18 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormularioCategoriaView
      */
+    private CategoriaData catData;
+    private ArrayList<Categoria> listaCategoria;
+    ArrayList<String> tipoCama = new ArrayList<>() ;
     FondoPanel fondo = new FondoPanel();
+    
     public FormularioCategoriaView() {
         initComponents();
+        tipoCama.add("Simple");
+        tipoCama.add("Queen");
+        tipoCama.add("King");
+        cargaTipoCama();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -49,9 +61,9 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
         jTPrecio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTCantCamas = new javax.swing.JTextField();
-        jTTipoCama = new javax.swing.JTextField();
         jBEliminar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        comboCategorias = new javax.swing.JComboBox<>();
 
         setTitle("Categoria");
 
@@ -166,12 +178,6 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
             }
         });
 
-        jTTipoCama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTTipoCamaKeyTyped(evt);
-            }
-        });
-
         jBEliminar.setBackground(new java.awt.Color(0, 102, 153));
         jBEliminar.setFont(new java.awt.Font("Lucida Calligraphy", 0, 11)); // NOI18N
         jBEliminar.setText("Eliminar");
@@ -218,12 +224,13 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(jBBuscar))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTTipoCama, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTCantCamas, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTCantPersonas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                            .addComponent(jTTipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jREstado))
+                            .addComponent(jREstado)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(comboCategorias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTTipoHabitacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jBSalir)
                 .addGap(23, 23, 23))
@@ -265,7 +272,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jTTipoCama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -280,7 +287,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                         .addGap(66, 66, 66))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jREstado)
@@ -328,10 +335,6 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
         noNumero(evt);
     }//GEN-LAST:event_jTCantCamasKeyTyped
 
-    private void jTTipoCamaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTipoCamaKeyTyped
-        noNumero(evt);
-    }//GEN-LAST:event_jTTipoCamaKeyTyped
-
     private void jTTipoHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTipoHabitacionKeyTyped
         noCaracter(evt);
     }//GEN-LAST:event_jTTipoHabitacionKeyTyped
@@ -363,7 +366,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
             int idCategoria = Integer.parseInt(jTIdCategoria.getText());
             int cantPersonas = Integer.parseInt(jTCantPersonas.getText());
             int cantCamas = Integer.parseInt(jTCantCamas.getText());
-            String tipoCama = jTTipoCama.getText();
+            String tipoCama = (String) comboCategorias.getSelectedItem();
             String tipoHabitacion = jTTipoHabitacion.getText();
             double precio = Double.parseDouble(jTPrecio.getText());
             boolean activo = jREstado.isSelected();
@@ -384,7 +387,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
         }else{
             int cantPer = Integer.parseInt(jTCantPersonas.getText());
             int cantCam = Integer.parseInt(jTCantCamas.getText());
-            String tipoCam = jTTipoCama.getText();
+            String tipoCam = (String)comboCategorias.getSelectedItem();
             String tipoHab = jTTipoHabitacion.getText();
             double pre = Double.parseDouble(jTPrecio.getText());
             boolean b = jREstado.isSelected();
@@ -406,7 +409,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
             
             jTCantPersonas.setText(String.valueOf(categ.getCantPersonas()));
             jTCantCamas.setText(String.valueOf(categ.getCantCamas()));
-            jTTipoCama.setText(String.valueOf(categ.getTipoCama()));
+            comboCategorias.setSelectedItem(String.valueOf(categ.getTipoCama()));
             jTTipoHabitacion.setText(categ.getTipoHabitacion());
             jTPrecio.setText(String.valueOf(categ.getPrecio()));
             jREstado.setEnabled(categ.isActivo());
@@ -421,7 +424,6 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
         jTCantPersonas.setText("");
         jTTipoHabitacion.setText("");
         jTCantCamas.setText("");
-        jTTipoCama.setText("");
         jTPrecio.setText("");
         jREstado.setSelected(false);
     }
@@ -429,13 +431,19 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
     private boolean vacio() {
         boolean vacio = false;
 
-        if (jTCantPersonas.getText().equals("") || jTTipoHabitacion.getText().equals("") || jTCantCamas.getText().equals("") || jTTipoCama.getText().equals("") || jTPrecio.getText().equals("")) {
+        if (jTCantPersonas.getText().equals("") || jTTipoHabitacion.getText().equals("") || jTCantCamas.getText().equals("") || jTPrecio.getText().equals("")) {
             vacio = true;
 
         }
         return (vacio);
     }
 
+       private void cargaTipoCama(){
+        for (String item : tipoCama){
+            comboCategorias.addItem(item);
+        }
+    }
+    
     public void noNumero(java.awt.event.KeyEvent evt) {
         if (!Character.isDigit(evt.getKeyChar())) {  //getToolkit().beep();
             evt.consume();
@@ -450,6 +458,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboCategorias;
     private javax.swing.JButton jBAgregar;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBEliminar;
@@ -472,7 +481,6 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTCantPersonas;
     private javax.swing.JTextField jTIdCategoria;
     private javax.swing.JTextField jTPrecio;
-    private javax.swing.JTextField jTTipoCama;
     private javax.swing.JTextField jTTipoHabitacion;
     // End of variables declaration//GEN-END:variables
 

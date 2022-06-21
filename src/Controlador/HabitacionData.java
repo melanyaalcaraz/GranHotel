@@ -268,10 +268,11 @@ public class HabitacionData {
         
         
         try {
-            String sql = "SELECT h.`idHabitacion`,h.`idCategoria`,h.`nmroHabitacion`,h.`piso`,h.`refaccion` \n" +
+            String sql =  "SELECT h.idHabitacion ,h.idCategoria,h.nmroHabitacion,h.piso,h.refaccion \n" +
                             "FROM habitacion h, categoria c \n" +
                             "WHERE  h.idCategoria= c.idCategoria\n" +
                              "AND h.refaccion = 0 and c.cantPersonas>=?";
+                    
          PreparedStatement ps = con.prepareStatement(sql);
          ps.setInt(1, CantPersonas);
          ResultSet rs = ps.executeQuery();

@@ -139,7 +139,7 @@ public class ReservaData {
             
             while (rs.next()) {
             Habitacion hab= new Habitacion();
-            Huesped hues;
+            
             Reserva res= new Reserva();
             Categoria cat= new Categoria();
                 hab = buscarHabitacion(rs.getInt("idHabitacion"));
