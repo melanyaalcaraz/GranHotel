@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="grupoHabitacion">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="title" type="java.lang.String" value="Reserva"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -58,9 +62,17 @@
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" pref="101" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" min="-2" pref="101" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" pref="128" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -78,13 +90,15 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="radioEstado" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
                                   <Component id="jBBuscarId" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jtPrecio" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="radioEstado" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jtPrecio" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -109,18 +123,21 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="comboHabitacion" min="-2" pref="317" max="-2" attributes="0"/>
                               <Component id="boxHuesped" min="-2" pref="317" max="-2" attributes="0"/>
                               <Component id="jTidReserva" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="comboHabitacion" min="-2" pref="317" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="buttonCargaCombo" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
@@ -150,7 +167,7 @@
                           <Component id="jSeparator1" min="-2" pref="317" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="262" max="32767" attributes="0"/>
+                  <EmptySpace pref="265" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -176,6 +193,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="comboHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonCargaCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -227,7 +245,7 @@
                       <Component id="buttonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -324,9 +342,6 @@
         <Component class="javax.swing.JRadioButton" name="radioEstado">
         </Component>
         <Component class="javax.swing.JTextField" name="jtPrecio">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="$"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtPrecioActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtPrecioKeyTyped"/>
@@ -340,7 +355,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Precio:"/>
+            <Property name="text" type="java.lang.String" value="Precio:           $ "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -356,6 +371,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioHabLibres">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoHabitacion"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Habitaciones libres"/>
           </Properties>
           <Events>
@@ -479,6 +497,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRHabOcupadas">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoHabitacion"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Habitaciones Ocupadas"/>
           </Properties>
           <Events>
@@ -502,6 +523,14 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Habitacion&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonCargaCombo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cargar Combo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCargaComboActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

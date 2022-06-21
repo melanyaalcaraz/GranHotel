@@ -39,6 +39,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
 
     private ArrayList<Huesped> listaH;
     private ArrayList<Habitacion> listaHab;
+    private ArrayList<Habitacion> listaHab1;
     private Conexion conexion;
     private DefaultTableModel modelo;
 
@@ -48,10 +49,10 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         HuesData = new HuespedData(conexion);
         habData = new HabitacionData(conexion);
         listaH = (ArrayList<Huesped>) HuesData.listarHuespedes();
-        listaHab = (ArrayList<Habitacion>) habData.listarHabitaciones();
+        
         modelo = (DefaultTableModel) jTable1.getModel();
-        cargaHuesped();
-        cargaHabitacion();
+//        cargaHuesped();
+//        cargaHabitacion();
 
     }
 
@@ -64,6 +65,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoHabitacion = new javax.swing.ButtonGroup();
         jPanel1 = new FondoPanel()
         ;
         jLabel3 = new javax.swing.JLabel();
@@ -95,6 +97,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         jRHabOcupadas = new javax.swing.JRadioButton();
         jBBuscarId = new javax.swing.JButton();
         comboHabitacion = new javax.swing.JComboBox<>();
+        buttonCargaCombo = new javax.swing.JButton();
 
         setTitle("Reserva");
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -137,7 +140,6 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Estado:");
 
-        jtPrecio.setText("$");
         jtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtPrecioActionPerformed(evt);
@@ -151,12 +153,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
 
         jLabel7.setFont(new java.awt.Font("Lucida Calligraphy", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Precio:");
+        jLabel7.setText("Precio:           $ ");
 
         jLabel9.setFont(new java.awt.Font("Lucida Calligraphy", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Listado de Habitaciones:");
 
+        grupoHabitacion.add(radioHabLibres);
         radioHabLibres.setText("Habitaciones libres");
         radioHabLibres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +222,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             }
         });
 
+        grupoHabitacion.add(jRHabOcupadas);
         jRHabOcupadas.setText("Habitaciones Ocupadas");
         jRHabOcupadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +237,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonCargaCombo.setText("Cargar Combo");
+        buttonCargaCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCargaComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -243,9 +254,14 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(177, 177, 177)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,12 +274,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
                                 .addGap(8, 8, 8))
-                            .addComponent(radioEstado)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(204, 204, 204)
                                 .addComponent(jBBuscarId))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioEstado)
+                                    .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,16 +298,18 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boxHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTidReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(101, 101, 101)))
+                            .addComponent(jTidReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonCargaCombo)))
+                        .addGap(10, 10, 10)))
                 .addGap(0, 20, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,7 +331,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +352,8 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCargaCombo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -373,7 +393,7 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
                     .addComponent(buttonAnular)
                     .addComponent(buttonSalir)
                     .addComponent(jBModificar))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -573,10 +593,18 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jBBuscarIdActionPerformed
 
+    private void buttonCargaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCargaComboActionPerformed
+        // TODO add your handling code here:
+        cargaHuesped();
+        cargaHabitacion();
+    }//GEN-LAST:event_buttonCargaComboActionPerformed
+
     public void limpiar() {
         jtCantPersonas.setText("");
         jtPrecio.setText("");
         radioEstado.setSelected(false);
+        comboHabitacion.removeAllItems();
+        boxHuesped.removeAllItems();
     }
 
     private void cargaHuesped() { // Carga al combo box
@@ -586,9 +614,12 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     }
     
     private void cargaHabitacion(){ // Carga al combo box
-        for(Habitacion item: listaHab){
+        comboHabitacion.removeAllItems();
+        int cantiPersonas = (Integer.parseInt(jtCantPersonas.getText()));
+        listaHab1 = (ArrayList<Habitacion>) habData.listarHabitaciones(cantiPersonas);
+        listaHab1.forEach((item) -> {
             comboHabitacion.addItem(item);
-        }
+        });
     }
 
     private void borrarFilaTabla() {
@@ -609,8 +640,8 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         Date fecha2 = fechaFin.getDate();
         LocalDate fechaF = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
          resData= new ReservaData(conexion);
-       
-         listaHab = (ArrayList) resData.obtenerHabitacionesOcupadas(fechaI,fechaF);
+       int cantiPersonas = (Integer.parseInt(jtCantPersonas.getText()));
+         listaHab = (ArrayList) resData.obtenerHabitacionesOcupadas(fechaI,fechaF,cantiPersonas);
         
         
         modelo.setRowCount(0);
@@ -629,21 +660,32 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
         Date fecha2 = fechaFin.getDate();
         LocalDate fechaF = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         resData = new ReservaData(conexion);
-        List<Habitacion> lista = resData.obtenerHabitacionesLibres(fechaI, fechaF);
+        int cantiPersonas = (Integer.parseInt(jtCantPersonas.getText()));
+        List<Habitacion> lista = resData.obtenerHabitacionesLibres(fechaI, fechaF,cantiPersonas);
         modelo.setRowCount(0);
         for (Habitacion h : lista) {
             modelo.addRow(new Object[]{h.getIdHabitacion(), h.getNroHabitacion(), h.obtengoIdCategoria(), h.isRefaccion(), h.getPiso()});
         }
     }
 
-    private boolean vacio() { //vacio no controla si esta marcado radiobutton siempre se puede modificar de nuevo
-        boolean vacio=false;
+//    private boolean vacio() { //vacio no controla si esta marcado radiobutton siempre se puede modificar de nuevo
+//        boolean vacio=false;
+//        String str = "";
+//        if (str.equals(jtPrecio.getText())||str.equals(jtCantPersonas.getText()) || fechaInicio.getDate()== fechaFin.getDate() || str.equals(jtPrecio.getText())) {
+//            vacio= true;
+//        }
+//        return(vacio);
+//    }
+    private boolean vacio() {
+       
         String str = "";
-        if (str.equals(jtPrecio.getText())||str.equals(jtCantPersonas.getText()) || fechaInicio.getDate()== fechaFin.getDate() || str.equals(jtPrecio.getText())) {
-            vacio= true;
+        if (!str.equals(jtPrecio.getText()) && !str.equals(jtCantPersonas.getText()) && !str.equals(fechaInicio.getDate()) && !str.equals(fechaFin.getDate()) && !str.equals(jtPrecio.getText())) {
+            return true;
+        } else {
+            return false;
         }
-        return(vacio);
     }
+
     
     public void noNumero(java.awt.event.KeyEvent evt) {
         if (!Character.isDigit(evt.getKeyChar())) {  //getToolkit().beep();
@@ -662,11 +704,13 @@ public class FormularioReservaView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Huesped> boxHuesped;
     private javax.swing.JButton buttonAnular;
+    private javax.swing.JButton buttonCargaCombo;
     private javax.swing.JButton buttonReservar;
     private javax.swing.JButton buttonSalir;
     private javax.swing.JComboBox<Habitacion> comboHabitacion;
     private com.toedter.calendar.JDateChooser fechaFin;
     private com.toedter.calendar.JDateChooser fechaInicio;
+    private javax.swing.ButtonGroup grupoHabitacion;
     private javax.swing.JButton jBBuscarId;
     private javax.swing.JButton jBModificar;
     private javax.swing.JLabel jLabel1;

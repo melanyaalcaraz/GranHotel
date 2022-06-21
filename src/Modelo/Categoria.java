@@ -9,7 +9,7 @@ public class Categoria {
     private int idCategoria;
     private int cantPersonas;
     private int cantCamas;
-    private int tipoCama;
+    private String tipoCama;
     private String tipoHabitacion;
     private double precio;
     private boolean activo;
@@ -18,7 +18,7 @@ public class Categoria {
     }
 
 
-    public Categoria(int idCategoria, int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion, double precio, boolean activo) {
+    public Categoria(int idCategoria, int cantPersonas, int cantCamas, String tipoCama, String tipoHabitacion, double precio, boolean activo) {
         this.idCategoria = idCategoria;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
@@ -28,14 +28,14 @@ public class Categoria {
         this.activo = activo;
     }
 
-    public Categoria(int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion) {
+    public Categoria(int cantPersonas, int cantCamas, String tipoCama, String tipoHabitacion) {
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;
         this.tipoHabitacion = tipoHabitacion;
     }
 
-    public Categoria(int cantPersonas, int cantCamas, int tipoCama, String tipoHabitacion, double precio, boolean activo) {
+    public Categoria(int cantPersonas, int cantCamas, String tipoCama, String tipoHabitacion, double precio, boolean activo) {
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;
@@ -70,11 +70,11 @@ public class Categoria {
         this.cantCamas = cantCamas;
     }
 
-    public int getTipoCama() {
+    public String getTipoCama() {
         return tipoCama;
     }
 
-    public void setTipoCama(int tipoCama) {
+    public void setTipoCama(String tipoCama) {
         this.tipoCama = tipoCama;
     }
 

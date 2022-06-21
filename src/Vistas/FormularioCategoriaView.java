@@ -363,7 +363,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
             int idCategoria = Integer.parseInt(jTIdCategoria.getText());
             int cantPersonas = Integer.parseInt(jTCantPersonas.getText());
             int cantCamas = Integer.parseInt(jTCantCamas.getText());
-            int tipoCama = Integer.parseInt(jTTipoCama.getText());
+            String tipoCama = jTTipoCama.getText();
             String tipoHabitacion = jTTipoHabitacion.getText();
             double precio = Double.parseDouble(jTPrecio.getText());
             boolean activo = jREstado.isSelected();
@@ -384,7 +384,7 @@ public class FormularioCategoriaView extends javax.swing.JInternalFrame {
         }else{
             int cantPer = Integer.parseInt(jTCantPersonas.getText());
             int cantCam = Integer.parseInt(jTCantCamas.getText());
-            int tipoCam = Integer.parseInt(jTTipoCama.getText());
+            String tipoCam = jTTipoCama.getText();
             String tipoHab = jTTipoHabitacion.getText();
             double pre = Double.parseDouble(jTPrecio.getText());
             boolean b = jREstado.isSelected();

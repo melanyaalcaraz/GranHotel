@@ -76,9 +76,10 @@ public class GranHotel {
 //                huespedd.listarHuespedes().forEach(huesped-> {System.out.println("hueped"+huesped);});
         
         
-        /*
+        
         HabitacionData hd = new HabitacionData(con);
-        Categoria cat1= new Categoria(5,2,3,1,"single",100,true);
+ //        System.out.println( hd.listarHabitaciones(2));
+       /* Categoria cat1= new Categoria(5,2,3,1,"single",100,true);
         Categoria cat2= new Categoria(6,2,1,1,"doble",100,true);
         Categoria cat3= new Categoria(7,3,2,2,"triple",1500,true);
         
@@ -97,10 +98,10 @@ public class GranHotel {
 //          hd.habilitarHabitacion(6, hab3);
 //         hd.deshabilitarHabitacion(3, hab3);
         
-//        List <Habitacion> lista = hd.obtenerHabitacionesXCategoria(1);
-//        //Habitacion con categoria 3 se encuentra en refaccion
-//        int total = 0;
-//        for(Habitacion h : lista){
+        List <Habitacion> lista = hd.listarHabitaciones(2);
+        //Habitacion con categoria 3 se encuentra en refaccion
+        int total = 0;
+        for(Habitacion h : lista){
 //            if(h.obtengoIdCategoria() ==1){
 //                    System.out.println("Categoria 1 - tipo cama: Simple ");
 //                }else if(h.obtengoIdCategoria()==2){
@@ -108,12 +109,12 @@ public class GranHotel {
 //                }else{
 //                     System.out.println("Categoria 3 - tipo cama: King size");
 //                }
-//            System.out.println("Id Habitacion: "+ h.getIdHabitacion());
-//            System.out.println("Numero Habitacion: " + h.getNroHabitacion());
-//            System.out.println("----------");
-//            total+=1;
-//         }
-//        System.out.println("El total de habitaciones: "+ total);
+            System.out.println("Id Habitacion: "+ h.getIdHabitacion());
+            System.out.println("Numero Habitacion: " + h.getNroHabitacion());
+            System.out.println("----------");
+            total+=1;
+         }
+        System.out.println("El total de habitaciones: "+ total);
 
 
 //        List <Habitacion> re = hd.obtenerHabitacionesNOhabilitadas();

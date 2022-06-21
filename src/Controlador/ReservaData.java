@@ -116,7 +116,7 @@ public class ReservaData {
         }
     }
     
-    public List<Habitacion> obtenerHabitacionesOcupadas(LocalDate fechaInicio, LocalDate fechaFin) {
+    public List<Habitacion> obtenerHabitacionesOcupadas(LocalDate fechaInicio, LocalDate fechaFin, int cantPerso) {
         List<Habitacion> habitaciones = new ArrayList<>();
 
         try {
@@ -126,14 +126,15 @@ public class ReservaData {
                     + "and ? <= r.fechaFin)\n"
                     + "or (? >= r.fechaInicio \n"
                     + "and ? <= r.fechaFin)\n"
-                    + "and r.activo=true";
+                    + "and r.activo=true"
+                    + "and c.cantPersonas>=?";
             PreparedStatement ps = con.prepareStatement(sql);
             //localDate a Date
             ps.setDate(1, Date.valueOf(fechaInicio));
             ps.setDate(2, Date.valueOf(fechaInicio));
-            ps.setDate(3, Date.valueOf(fechaFin ));
+            ps.setDate(3, Date.valueOf(fechaFin));
             ps.setDate(4, Date.valueOf(fechaFin));
-            
+             ps.setInt(5, cantPerso);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -158,25 +159,28 @@ public class ReservaData {
         return habitaciones;
     }
 
-    public List<Habitacion> obtenerHabitacionesLibres( LocalDate fechaInicio, LocalDate fechaFin) {
+    public List<Habitacion> obtenerHabitacionesLibres( LocalDate fechaInicio, LocalDate fechaFin, int cantPerso) {
         List<Habitacion> habitaciones = new ArrayList<>();
         try {
             String sql = "select h.idHabitacion, h.idCategoria, h.nmroHabitacion, h.piso, h.refaccion from habitacion h , categoria c \n"
-                    + "where h.idCategoria=c.idCategoria and  h.refaccion = 0 and c.cantPersonas >= 2 \n"
+                    + "where h.idCategoria=c.idCategoria and  h.refaccion = 0 and c.cantPersonas>=? \n"
                     + "and h.idHabitacion not in (select r.idHabitacion from reserva r \n"
                     + "where (? >= r.fechaInicio \n" 
                     + "and ? <= r.fechaFin)\n" 
                     + "or (? >= r.fechaInicio \n" 
                     + "and ? <= r.fechaFin) \n" 
-                    + "and r.activo=true)";
+                    + "and r.activo=true)"
+                    + "and c.cantPersonas>=? ";
+                   
             
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, cantPerso);
             //localDate a Date
-            ps.setDate(1, Date.valueOf(fechaInicio));
             ps.setDate(2, Date.valueOf(fechaInicio));
-            ps.setDate(3, Date.valueOf(fechaFin ));
-            ps.setDate(4, Date.valueOf(fechaFin));
-            
+            ps.setDate(3, Date.valueOf(fechaInicio));
+            ps.setDate(4, Date.valueOf(fechaFin ));
+            ps.setDate(5, Date.valueOf(fechaFin));
+            ps.setInt(6, cantPerso);
            
             ResultSet rs = ps.executeQuery();
            
@@ -186,7 +190,7 @@ public class ReservaData {
                 hab = buscarHabitacion(rs.getInt("idHabitacion"));
                 hab.setNroHabitacion(rs.getInt("nmroHabitacion"));
                 hab.setPiso(rs.getInt("piso"));
-               Categoria cat = buscarCategoria(rs.getInt("idCategoria"));
+                Categoria cat = buscarCategoria(rs.getInt("idCategoria"));
                 int idCategoria=cat.getIdCategoria();
                 hab.modificoIdCategoria(idCategoria);
                 

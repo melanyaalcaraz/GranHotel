@@ -262,28 +262,29 @@ public class HabitacionData {
         
     }
       
-       public List<Habitacion> listarHabitaciones() {
+       public List<Habitacion> listarHabitaciones(int CantPersonas) {
 
         List<Habitacion> habitaciones = new ArrayList<>();
-
+        
+        
         try {
-            String sql = "SELECT * FROM habitacion WHERE refaccion = 0";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-              
-                
-               
-            
+            String sql = "SELECT h.`idHabitacion`,h.`idCategoria`,h.`nmroHabitacion`,h.`piso`,h.`refaccion` \n" +
+                            "FROM habitacion h, categoria c \n" +
+                            "WHERE  h.idCategoria= c.idCategoria\n" +
+                             "AND h.refaccion = 0 and c.cantPersonas>=?";
+         PreparedStatement ps = con.prepareStatement(sql);
+         ps.setInt(1, CantPersonas);
+         ResultSet rs = ps.executeQuery();
+             
             while (rs.next()) {
                 
-                Categoria c = new Categoria();
                 Habitacion habitacion = new Habitacion();
+                Categoria c = new Categoria();
                 c.setIdCategoria(rs.getInt("idCategoria"));
-                
-                
+                int idCat= c.getIdCategoria();
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setCategoria(c);
+                habitacion.modificoIdCategoria(idCat);
                 habitacion.setNroHabitacion(rs.getInt("nmroHabitacion"));
                 habitacion.setPiso(rs.getInt("piso"));
                 habitacion.setRefaccion(rs.getBoolean("refaccion"));

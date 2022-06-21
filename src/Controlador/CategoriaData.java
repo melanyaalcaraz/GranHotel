@@ -34,7 +34,7 @@ public class CategoriaData {
                 ps.setInt(1, categoria.getIdCategoria());
                 ps.setInt(2, categoria.getCantPersonas());
                 ps.setInt(3, categoria.getCantCamas());
-                ps.setInt(4, categoria.getTipoCama());
+                ps.setString(4, categoria.getTipoCama());
                 ps.setString(5, categoria.getTipoHabitacion());
                 ps.setDouble(6, categoria.getPrecio());
                 ps.setInt(7, categoria.isActivo() ? 1 : 0);
@@ -64,7 +64,7 @@ public class CategoriaData {
             
             ps.setInt(1, categoria.getCantPersonas());
             ps.setInt(2, categoria.getCantCamas());
-            ps.setInt(3, categoria.getTipoCama());
+            ps.setString(3, categoria.getTipoCama());
             ps.setString(4, categoria.getTipoHabitacion());
             ps.setDouble(5, categoria.getPrecio());
             ps.setBoolean(6, categoria.isActivo());
@@ -116,7 +116,7 @@ public class CategoriaData {
                 categoria.setIdCategoria(id);
                 categoria.setCantCamas(rs.getInt("cantCamas"));
                 categoria.setCantPersonas(rs.getInt("cantPersonas"));
-                categoria.setTipoCama(rs.getInt("tipoCamas"));
+                categoria.setTipoCama(rs.getString("tipoCamas"));
                 categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 categoria.setPrecio(rs.getDouble("precio"));
                 categoria.setActivo(rs.getBoolean("activo"));
