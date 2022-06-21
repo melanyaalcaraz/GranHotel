@@ -271,18 +271,19 @@ public class HabitacionData {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             Categoria c = new Categoria();
+            Habitacion habitacion = new Habitacion();
             
             while (rs.next()) {
                 
-                c = buscarCategoria(rs.getInt("idCategoria"));
+               c.setIdCategoria(rs.getInt("idCategoria"));
                 
                 
-                Habitacion habitacion = new Habitacion();
+               
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setCategoria(c);
-                habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                habitacion.setNroHabitacion(rs.getInt("nmroHabitacion"));
                 habitacion.setPiso(rs.getInt("piso"));
-                habitacion.setRefaccion(rs.getBoolean("activo"));
+                habitacion.setRefaccion(rs.getBoolean("refaccion"));
                 
                 habitaciones.add(habitacion);
             }
