@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -150,6 +152,33 @@ public class CategoriaData {
         }
     }
     
+    public List<Categoria> listarCategorias() {
+
+        List<Categoria> categorias = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM categoria WHERE activo = 1 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Categoria cat= new Categoria();
+                cat.setIdCategoria(rs.getInt("idCategoria"));
+                cat.setCantPersonas(rs.getInt("cantPersonas"));
+                cat.setCantCamas(rs.getInt("cantCamas"));
+                cat.setTipoCama(rs.getString("tipoCama"));
+                cat.setTipoHabitacion(rs.getString("tipoHabitacion"));
+                cat.setPrecio(rs.getDouble("precio"));
+                cat.setActivo(rs.getBoolean("activo"));
+                
+                categorias.add(cat);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,  "Error interno al armar la lista de huespedes");
+        }
+        return categorias;
+    }
     
 }
 
